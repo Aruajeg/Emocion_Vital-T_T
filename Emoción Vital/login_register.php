@@ -31,7 +31,7 @@
                     <a href="https://www.instagram.com/unefa_ve/" target="_blank" class="icon"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://x.com/Unefa_VEN" target="_blank" class="icon"><i class="fa-brands fa-twitter"></i></a>
                 </div>
-                <input type="email" placeholder="Correo electrónico" name="correo" required>
+                <input type="email" id="email" pattern=".+@gmail.com" placeholder="Correo electrónico" name="correo" required>
                 <input type="text" placeholder="Usuario" name="username" required>
                 <input type="password" placeholder="Contraseña" name="contrasena" require>
                 <button type="submit">Crear</button>
