@@ -7,7 +7,7 @@
     $Correo = $_POST['correo'];
     $Contrasena = $_POST['contrasena'];
 
-    $validar_login = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo='$Correo' and contrasena='$Contrasena'");
+    $validar_login = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo='$Correo' and contrasena= MD5('$Contrasena')");
 
     if(mysqli_num_rows($validar_login) > 0){
         $_SESSION['usuario'] = $Correo;
@@ -21,5 +21,6 @@
         exit;
     }
 
+echo $Contrasena;
 
 ?>

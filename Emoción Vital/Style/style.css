@@ -8,13 +8,15 @@
 }
 
 body{
-    background-color: #f2fdf2;
+    background-color: #fdf2fb;
     background: linear-gradient(to bottom, #f2fdf2, #e2ffe1);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+    background-image: url('../Imagen/Fondo.png');
+    background-size: cover;
 }
 
 .container{
@@ -40,14 +42,14 @@ body{
 }
 
 .container a{
-    color: #f5dc00;
+    color: #164a41;
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
 
 .container button{
-    background-color: #f5dc00;
+    background-color: #f1b24a;
     color: #ffffff;
     font-size: 12px;
     padding: 10px 45px;
@@ -76,7 +78,7 @@ body{
 }
 
 .container input{
-    background-color: #f2fdf2;
+    background-color: #d3fac5;
     border: none;
     margin: 8px 0;
     padding: 10px 15px;
@@ -94,9 +96,16 @@ body{
 }
 
 .sign-in{
+    color: #164a41;
     left: 0;
     width: 50%;
     z-index: 2;
+}
+
+.btn-2{
+    color: #164a41;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .container.active .sign-in{
@@ -104,6 +113,7 @@ body{
 }
 
 .sign-up{
+    color: #164a41;
     left: 0;
     width: 50%;
     opacity: 0;
@@ -161,9 +171,9 @@ body{
 }
 
 .toggle{
-    background-color: #21ad0e;
+    background-color: #164a41;
     height: 100%;
-    background: linear-gradient(to right, #51e23e, #21ad0e);
+    background: linear-gradient(to right, #3d5e3d, #6a9e57);
     color: #ffffff;
     position: relative;
     left: -100%;

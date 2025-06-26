@@ -23,7 +23,7 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form action="php/registro_usuario_be.php" method="POST">
+            <form id=registerForm" action="php/registro_usuario_be.php" method="POST">
                 <h1>Crear Cuenta</h1>
                 <div class="social-icons">
                     <a href="https://www.youtube.com/@UNEFA_VEN" target="_blank" class="icon"><i class="fa-brands fa-youtube"></i></a>
@@ -31,14 +31,14 @@
                     <a href="https://www.instagram.com/unefa_ve/" target="_blank" class="icon"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://x.com/Unefa_VEN" target="_blank" class="icon"><i class="fa-brands fa-twitter"></i></a>
                 </div>
-                <input type="email" placeholder="Correo electrónico" name="correo">
-                <input type="text" placeholder="Usuario" name="username">
-                <input type="password" placeholder="Contraseña" name="contrasena">
-                <button>Crear</button>
+                <input type="email" placeholder="Correo electrónico" name="correo" required>
+                <input type="text" placeholder="Usuario" name="username" required>
+                <input type="password" placeholder="Contraseña" name="contrasena" require>
+                <button type="submit">Crear</button>
             </form>
         </div>
         <div class="form-container sign-in">
-            <form action="php/login_usuario_be.php" method="POST">
+            <form id=loginForm" action="php/login_usuario_be.php" method="POST">
                 <h1>Iniciar Sesión</h1>
                 <div class="social-icons">
                     <a href="https://www.youtube.com/@UNEFA_VEN" target="_blank" class="icon"><i class="fa-brands fa-youtube"></i></a>
@@ -46,9 +46,9 @@
                     <a href="https://www.instagram.com/unefa_ve/" target="_blank" class="icon"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://x.com/Unefa_VEN" target="_blank" class="icon"><i class="fa-brands fa-twitter"></i></a>
                 </div>
-                <input type="email" placeholder="Correo electrónico" name="correo">
-                <input type="password" placeholder="Contraseña" name="contrasena">
-                <a href="#">¿Olvidaste tu contraseña?</a>
+                <input type="email" placeholder="Correo electrónico" name="correo" required>
+                <input type="password" placeholder="Contraseña" name="contrasena" required>
+                <a href="recuperar_contraseña.php">¿Olvidaste tu contraseña?</a>
                 <button>Entrar</button>
             </form>
         </div>
@@ -66,9 +66,41 @@
                 </div>
             </div>
         </div>
+        
+        </div>
+        <!-- Botón para volver al inicio -->
+        <div style="text-align:center; margin-top:30px;">
+            <a href="index.html" class="btn-2">REGRESAR</a>
+        </div>
+
+    </div>
     </div>
 
     <script src="Js\script.js"></script>
+
+    <script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    const correo = this.correo.value.trim();
+    const username = this.username.value.trim();
+    const contrasena = this.contrasena.value.trim();
+    if (!correo || !username || !contrasena) {
+        alert('Por favor, completa todos los campos.');
+        e.preventDefault();
+    }
+});
+</script>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    const correo = this.correo.value.trim();
+    const contrasena = this.contrasena.value.trim();
+    if (!correo || !contrasena) {
+        alert('Por favor, completa todos los campos.');
+        e.preventDefault();
+    }
+});
+</script>
+
 </body>
 
 </html>

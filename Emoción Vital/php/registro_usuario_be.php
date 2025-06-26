@@ -6,7 +6,7 @@
     $Username = $_POST['username'];
     $Contrasena = $_POST['contrasena'];
 
-    $query = "INSERT INTO usuario(correo, username, contrasena) VALUES('$Correo', '$Username', '$Contrasena')";
+    $query = "INSERT INTO usuario(correo, username, contrasena) VALUES('$Correo', '$Username', MD5('$Contrasena'))";
 
     //Verificar que el correo no se repita en la BD
     $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo = '$Correo' ");
