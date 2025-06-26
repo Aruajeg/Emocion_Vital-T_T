@@ -34,6 +34,7 @@
                 <input type="email" id="email" pattern=".+@gmail\.com" placeholder="Correo electrónico" name="correo" required>
                 <input type="text" placeholder="Usuario" name="username" required>
                 <input type="password" placeholder="Contraseña" name="contrasena" require>
+                <input type="password" placeholder="Repite la contraseña" name="verificar_contrasena" require>
                 <button type="submit">Crear</button>
             </form>
         </div>
