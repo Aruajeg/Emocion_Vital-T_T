@@ -34,12 +34,12 @@
                 </div> -->
                 <input type="email" id="email" pattern=".+@gmail\.com" placeholder="Correo electrónico" name="correo" required>
                 <input type="text" placeholder="Usuario" name="username" required>
-                <label for="ps1">Pregunta de seguridad</label>
-                <select name="" id="ps1">
-                    <option value="">Color favorito</option>
-                    <option value="">Nombre de su madre</option>
-                    <option value="">Nombre de su padre</option>
-                    <option value="">Comida favorita</option>
+                <label for="P1">Pregunta de seguridad</label>
+                <select name="" id="P1">
+                    <option value="1">Color favorito</option>
+                    <option value="2">Nombre de su madre</option>
+                    <option value="3">Nombre de su padre</option>
+                    <option value="4">Comida favorita</option>
                 </select>
                 <input type="text" placeholder="Respuesta" name="RP1" required>
                 <input type="password" placeholder="Contraseña" name="contrasena" require>
