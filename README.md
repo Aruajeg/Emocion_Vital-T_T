@@ -1,7 +1,7 @@
 
 # 🧠 Emoción Vital - Sistema de Consultas Psicológicas
 
-![Banner](Emocion_Vital-T_T/Emoción Vital/Imagen/banner.png)
+![Banner](Emoción Vital/Imagen/banner.png)
 
 👥 Integrantes del Proyecto
 
