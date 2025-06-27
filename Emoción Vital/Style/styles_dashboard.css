@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
+/* Paleta personalizada para navbar y sidenav */
 :root {
+  --verde-oscuro: #164a41;
+  --amarillo: #f1b24a;
+  --blanco: #ffffff;
+  --verde-claro: #9dc88d;
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -69,6 +74,82 @@
   --bs-highlight-bg: #fff3cd;
 }
 
+/* Navbar superior */
+.sb-topnav {
+  background-color: var(--verde-oscuro) !important;
+  color: var(--blanco) !important;
+  border-bottom: 3px solid var(--amarillo);
+}
+.sb-topnav .navbar-brand,
+.sb-topnav .nav-link,
+.sb-topnav .navbar-nav .nav-link,
+.sb-topnav .navbar-toggler {
+  color: var(--blanco) !important;
+}
+.sb-topnav .nav-link:hover,
+.sb-topnav .navbar-brand:hover {
+  color: var(--amarillo) !important;
+}
+#sidebarToggle {
+  color: var(--amarillo) !important;
+}
+
+/* Sidenav */
+.sb-sidenav,
+.sb-sidenav-dark {
+  background-color: var(--verde-oscuro) !important;
+  color: var(--blanco) !important;
+}
+.sb-sidenav .sb-sidenav-menu .sb-sidenav-menu-heading,
+.sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
+  color: var(--amarillo) !important;
+}
+.sb-sidenav .sb-sidenav-menu .nav-link,
+.sb-sidenav-dark .sb-sidenav-menu .nav-link {
+  color: var(--blanco) !important;
+  border-left: 4px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.sb-sidenav .sb-sidenav-menu .nav-link.active,
+.sb-sidenav .sb-sidenav-menu .nav-link:hover,
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active,
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
+  background-color: var(--verde-claro) !important;
+  color: var(--verde-oscuro) !important;
+  border-left: 4px solid var(--amarillo);
+}
+.sb-sidenav .sb-sidenav-footer,
+.sb-sidenav-dark .sb-sidenav-footer {
+  background-color: var(--amarillo) !important;
+  color: var(--verde-oscuro) !important;
+}
+
+/* Fondo general del contenido */
+#layoutSidenav_content, body {
+  background-color: var(--blanco) !important;
+  color: var(--verde-oscuro) !important;
+}
+
+/* Tarjetas principales */
+.card.bg-primary {
+  background-color: var(--verde-oscuro) !important;
+  color: var(--blanco) !important;
+}
+.card.bg-warning {
+  background-color: var(--amarillo) !important;
+  color: var(--verde-oscuro) !important;
+}
+.card, .modal-content, .alert, .list-group-item {
+  border-color: var(--verde-claro) !important;
+}
+
+/* Links */
+a, .nav-link {
+  color: var(--verde-oscuro) !important;
+}
+a:hover, .nav-link:hover {
+  color: var(--amarillo) !important;
+}
 *,
 *::before,
 *::after {
