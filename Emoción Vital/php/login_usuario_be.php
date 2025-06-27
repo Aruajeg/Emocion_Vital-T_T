@@ -11,7 +11,7 @@
 
     if(mysqli_num_rows($validar_login) > 0){
         $_SESSION['usuario'] = $Correo;
-        header("location: /php/dashborad.php");
+        header("location: /php/dashboard.php");
         exit;
     } else {
         echo '<script> 
