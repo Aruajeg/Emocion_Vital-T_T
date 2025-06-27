@@ -5,7 +5,6 @@
 
 👥 Integrantes del Proyecto
 
-papa
 - [@Angelo Lelli](https://github.com/angelolelli)
 - [@Alberth Espinoza](https://github.com/Aruajeg)
 - [@Janet Ochoa](https://github.com/Ja-n3t-777)
