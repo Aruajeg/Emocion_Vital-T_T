@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="Style\style.css">
+    <link rel="stylesheet" href="Style\style_login_register.css">
     <title>Formulario de inicio de sesión y registro</title>
 </head>
 
@@ -25,14 +25,23 @@
         <div class="form-container sign-up">
             <form id=registerForm" action="php/registro_usuario_be.php" method="POST">
                 <h1>Crear Cuenta</h1>
-                <div class="social-icons">
+                
+                <!-- <div class="social-icons">
                     <a href="https://www.youtube.com/@UNEFA_VEN" target="_blank" class="icon"><i class="fa-brands fa-youtube"></i></a>
                     <a href="https://www.facebook.com/groups/2487908341354828/?hoisted_section_header_type=recently_seen&multi_permalinks=3659583284187322" target="_blank" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/unefa_ve/" target="_blank" class="icon"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://x.com/Unefa_VEN" target="_blank" class="icon"><i class="fa-brands fa-twitter"></i></a>
-                </div>
+                </div> -->
                 <input type="email" id="email" pattern=".+@gmail\.com" placeholder="Correo electrónico" name="correo" required>
                 <input type="text" placeholder="Usuario" name="username" required>
+                <label for="ps1">Pregunta de seguridad</label>
+                <select name="" id="ps1">
+                    <option value="">Color favorito</option>
+                    <option value="">Nombre de su madre</option>
+                    <option value="">Nombre de su padre</option>
+                    <option value="">Comida favorita</option>
+                </select>
+                <input type="text" placeholder="Respuesta" name="RP1" required>
                 <input type="password" placeholder="Contraseña" name="contrasena" require>
                 <input type="password" placeholder="Repite la contraseña" name="verificar_contrasena" require>
                 <button type="submit">Crear</button>
@@ -41,15 +50,15 @@
         <div class="form-container sign-in">
             <form id=loginForm" action="php/login_usuario_be.php" method="POST">
                 <h1>Iniciar Sesión</h1>
-                <div class="social-icons">
+               <!-- <div class="social-icons">
                     <a href="https://www.youtube.com/@UNEFA_VEN" target="_blank" class="icon"><i class="fa-brands fa-youtube"></i></a>
                     <a href="https://www.facebook.com/groups/2487908341354828/?hoisted_section_header_type=recently_seen&multi_permalinks=3659583284187322" target="_blank" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/unefa_ve/" target="_blank" class="icon"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://x.com/Unefa_VEN" target="_blank" class="icon"><i class="fa-brands fa-twitter"></i></a>
-                </div>
+                </div> -->
                 <input type="email" placeholder="Correo electrónico" name="correo" required>
                 <input type="password" placeholder="Contraseña" name="contrasena" required>
-                <a href="recuperar_contraseña.php">¿Olvidaste tu contraseña?</a>
+                <a href="/php/recuperar_contrasena.php">¿Olvidaste tu contraseña?</a>
                 <button>Entrar</button>
             </form>
         </div>
@@ -71,7 +80,7 @@
         </div>
         <!-- Botón para volver al inicio -->
         <div style="text-align:center; margin-top:30px;">
-            <a href="index.html" class="btn-2">REGRESAR</a>
+            <a href="index.html" class="btn-2">Regresar al inicio</a>
         </div>
 
     </div>
