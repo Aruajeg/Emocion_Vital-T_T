@@ -108,7 +108,7 @@ Deberías ver la versión de Git instalada en tu sistema.
 
 ### 1. Obtener la URL del repositorio
   🔹 Ve al repositorio en GitHub que deseas clonar 
-   [Link de este repositorio](https://github.com/Aruajeg/Emocion_Vital-T_T)
+  [Link de este repositorio](https://github.com/Aruajeg/Emocion_Vital-T_T)
   🔹 Haz clic en el botón verde **"Code"**  
   🔹 Copia la URL HTTPS
 
@@ -120,16 +120,19 @@ Deberías ver la versión de Git instalada en tu sistema.
     cd C:\xampp\htdocs
     ```
     
-También puedes navegar manualmente a:
-   C:\xampp\htdocs
+    También puedes navegar manualmente a:
+    ```sh
+    C:\xampp\htdocs
+    ```
 
 2. Ejecuta el comando de clonación:
-  ```sh
-  git clone https://github.com/Aruajeg/Emocion_Vital-T_T
-  ```
+    ```sh
+    git clone https://github.com/Aruajeg/Emocion_Vital-T_T
+    ```
 
 ### 3. Acceder al directorio del proyecto
 📂 Después de clonar:
-   cd mi_repositorio
-
-- O ingresa a la carpeta `htdocs` para verificar el repositorio.
+    ```sh
+    cd Emocion_Vital-T_T
+    ```
+    O ingresa a la carpeta `htdocs` para verificar el repositorio.
