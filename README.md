@@ -116,8 +116,10 @@ Deberías ver la versión de Git instalada en tu sistema.
 🖥️ Desde la terminal (cmd):
 
 1. Navega al directorio htdocs de XAMPP:
-   cd C:\xampp\htdocs
-
+    ```sh
+    cd C:\xampp\htdocs
+    ```
+    
 También puedes navegar manualmente a:
    C:\xampp\htdocs
 
