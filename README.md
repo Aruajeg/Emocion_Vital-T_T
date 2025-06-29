@@ -47,3 +47,60 @@ Si aún no tienes una cuenta, sigue estos pasos:
 
 ¡Listo! Ya podrás acceder al sistema con tus nuevas credenciales.
 > ⚠️ Recuerda guardar tus datos de acceso en un lugar seguro.
+
+# Guía de Instalación y Configuración
+Este apartado te guiará paso a paso en la instalación y configuración del entorno necesario para ejecutar el proyecto.
+
+## 📥 1. Descargar e Instalar XAMPP con PHP
+
+### Descargar XAMPP
+1. Visita la [página oficial de XAMPP](https://www.apachefriends.org/es/index.html).
+2. Descarga el instalador para tu sistema operativo.
+
+### Instalar XAMPP
+1. Ejecuta el instalador descargado
+2. Selecciona los componentes a instalar (mínimo Apache, MySQL y PHP)
+3. Elige directorio de instalación (ej: C:\xampp)
+4. Completa el proceso de instalación
+
+### Verificar la instalación
+- Una vez que XAMPP se haya instalado, abre el **Panel de Control de XAMPP** (se encuentra en el directorio donde lo instalaste, como `C:\xampp\xampp-control.exe`).  
+  
+- Inicia los servicios **Apache** y **MySQL** desde el panel de control.
+
+- Abre tu navegador y escribe en la barra de direcciones:  
+  - [`http://localhost`](http://localhost)  
+  - [`http://localhost/phpmyadmin/`](http://localhost/phpmyadmin/)  
+
+  Deberías ver la página de inicio de XAMPP o phpMyAdmin.
+
+### Verificar la versión de PHP
+- Ejecuta el siguiente comando en la terminal (**CMD**):  
+  ```sh
+  php -v
+Deberías ver la versión de PHP instalada en tu sistema.
+
+## 📥 2. Descargar e Instalar Git
+
+### 1. Descargar Git
+🌐 Visita la página oficial de descarga de Git:  
+[Descargar Git](https://git-scm.com/downloads)  
+🔻 Selecciona la versión compatible con tu sistema operativo.
+
+### 2. Instalar Git
+🛠️ Sigue estos pasos:
+- Ejecuta el instalador descargado
+- Acepta los términos de licencia
+- **Importante:** Selecciona la opción:  
+  `Git from the command line and also from 3rd-party software`  
+  (Esto integra Git con la línea de comandos de Windows)
+- Completa el proceso con las configuraciones predeterminadas
+
+### 3. Verificar la instalación de Git
+✅ Para confirmar que Git se instaló correctamente:
+1. Abre el símbolo del sistema (`cmd`)
+2. Ejecuta:
+   ```sh
+   git --version
+
+Deberías ver la versión de Git instalada en tu sistema.
