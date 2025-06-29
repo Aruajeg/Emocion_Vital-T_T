@@ -110,9 +110,9 @@ Deberías ver la versión de Git instalada en tu sistema.
 
 ### 1. Obtener la URL del repositorio
 🔹 Ve al repositorio en GitHub que deseas clonar 
-    ```plaintext
-    https://github.com/Aruajeg/Emocion_Vital-T_T
-    ```
+  ```plaintext
+  https://github.com/Aruajeg/Emocion_Vital-T_T
+  ```
 [Link de este repositorio](https://github.com/Aruajeg/Emocion_Vital-T_T)
 
 🔹 Haz clic en el botón verde **"Code"**  
@@ -122,24 +122,24 @@ Deberías ver la versión de Git instalada en tu sistema.
 🖥️ Desde la terminal (cmd):
 
 1. Navega al directorio htdocs de XAMPP:
-    ```sh
-    cd C:\xampp\htdocs
-    ```
+  ```sh
+  cd C:\xampp\htdocs
+  ```
   
   También puedes navegar manualmente a:
-    ```sh
-    C:\xampp\htdocs
-    ```
+  ```sh
+  C:\xampp\htdocs
+  ```
 
 2. Ejecuta el comando de clonación:
-    ```sh
-    git clone https://github.com/Aruajeg/Emocion_Vital-T_T
-    ```
+  ```sh
+  git clone https://github.com/Aruajeg/Emocion_Vital-T_T
+  ```
 
 ### 3. Acceder al directorio del proyecto
 📂 Después de clonar:
-    ```sh
-    cd Emocion_Vital-T_T
-    ```
-    O ingresa a la carpeta `htdocs` para verificar el repositorio.
+  ```sh
+  cd Emocion_Vital-T_T
+  ```
+  O ingresa a la carpeta `htdocs` para verificar el repositorio.
 
