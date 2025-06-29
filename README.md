@@ -124,7 +124,9 @@ También puedes navegar manualmente a:
    C:\xampp\htdocs
 
 2. Ejecuta el comando de clonación:
-   git clone https://github.com/Aruajeg/Emocion_Vital-T_T
+  ```sh
+  git clone https://github.com/Aruajeg/Emocion_Vital-T_T
+  ```
 
 ### 3. Acceder al directorio del proyecto
 📂 Después de clonar:
