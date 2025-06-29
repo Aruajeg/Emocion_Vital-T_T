@@ -100,45 +100,45 @@ Deberías ver la versión de PHP instalada en tu sistema.
 ✅ Para confirmar que Git se instaló correctamente:
 1. Abre el símbolo del sistema (**CMD**)
 2. Ejecuta:
-   ```sh
-   git --version
-   ```
+  ```sh
+  git --version
+  ```
 
 Deberías ver la versión de Git instalada en tu sistema.
 
 ## 🐙 3. Clonar un Repositorio de GitHub
 
 ### 1. Obtener la URL del repositorio
-  🔹 Ve al repositorio en GitHub que deseas clonar 
-      ```plaintext
-     https://github.com/usuario/repositorio.git
-     ```
-    [Link de este repositorio](https://github.com/Aruajeg/Emocion_Vital-T_T)
-  
-  🔹 Haz clic en el botón verde **"Code"**  
-  🔹 Copia la URL HTTPS
+🔹 Ve al repositorio en GitHub que deseas clonar 
+  ```plaintext
+  https://github.com/usuario/repositorio.git
+  ```
+  [Link de este repositorio](https://github.com/Aruajeg/Emocion_Vital-T_T)
+🔹 Haz clic en el botón verde **"Code"**  
+🔹 Copia la URL HTTPS
 
 ### 2. Clonar el repositorio
 🖥️ Desde la terminal (cmd):
 
 1. Navega al directorio htdocs de XAMPP:
-    ```sh
-    cd C:\xampp\htdocs
-    ```
-    
-    También puedes navegar manualmente a:
-    ```sh
-    C:\xampp\htdocs
-    ```
+  ```sh
+  cd C:\xampp\htdocs
+  ```
+  
+  También puedes navegar manualmente a:
+  ```sh
+  C:\xampp\htdocs
+  ```
 
 2. Ejecuta el comando de clonación:
-    ```sh
-    git clone https://github.com/Aruajeg/Emocion_Vital-T_T
-    ```
+  ```sh
+  git clone https://github.com/Aruajeg/Emocion_Vital-T_T
+  ```
 
 ### 3. Acceder al directorio del proyecto
 📂 Después de clonar:
-     ```sh
-      cd mi_repositorio
-      ```
-    O ingresa a la carpeta `htdocs` para verificar el repositorio.
+  ```sh
+  cd mi_repositorio
+  ```
+  O ingresa a la carpeta `htdocs` para verificar el repositorio.
+
