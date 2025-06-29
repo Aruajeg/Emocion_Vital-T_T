@@ -122,24 +122,24 @@ Deberías ver la versión de Git instalada en tu sistema.
 🖥️ Desde la terminal (cmd):
 
 1. Navega al directorio htdocs de XAMPP:
-   ```sh
+    ```sh
     cd C:\xampp\htdocs
-   ```
+    ```
   
   También puedes navegar manualmente a:
     ```sh
-   C:\xampp\htdocs
+    C:\xampp\htdocs
     ```
 
 2. Ejecuta el comando de clonación:
-   ```sh
+    ```sh
     git clone https://github.com/Aruajeg/Emocion_Vital-T_T
-   ```
+    ```
 
 ### 3. Acceder al directorio del proyecto
 📂 Después de clonar:
     ```sh
-   cd Emocion_Vital-T_T
-   ```
+    cd Emocion_Vital-T_T
+    ```
     O ingresa a la carpeta `htdocs` para verificar el repositorio.
 
