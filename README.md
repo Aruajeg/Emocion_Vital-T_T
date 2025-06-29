@@ -119,7 +119,7 @@ Deberías ver la versión de Git instalada en tu sistema.
 🔹 Copia la URL HTTPS
 
 ### 2. Clonar el repositorio
-🖥️ Desde la terminal (cmd):
+🖥️ Desde la terminal (**CMD**):
 
 1. Navega al directorio htdocs de XAMPP:
   ```sh
