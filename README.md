@@ -78,6 +78,7 @@ Deberías ver la página de inicio de XAMPP o phpMyAdmin.
 - Ejecuta el siguiente comando en la terminal (**CMD**):  
   ```sh
   php -v
+  ```
 Deberías ver la versión de PHP instalada en tu sistema.
 
 ## 📥 2. Descargar e Instalar Git
@@ -101,6 +102,7 @@ Deberías ver la versión de PHP instalada en tu sistema.
 2. Ejecuta:
    ```sh
    git --version
+   ```
 
 Deberías ver la versión de Git instalada en tu sistema.
 
@@ -111,7 +113,6 @@ Deberías ver la versión de Git instalada en tu sistema.
     ```plaintext
     https://github.com/usuario/repositorio.git
     ```
-
     [Link de este repositorio](https://github.com/Aruajeg/Emocion_Vital-T_T)
   🔹 Haz clic en el botón verde **"Code"**  
   🔹 Copia la URL HTTPS
@@ -139,5 +140,4 @@ Deberías ver la versión de Git instalada en tu sistema.
     ```sh
     cd Emocion_Vital-T_T
     ```
-
     O ingresa a la carpeta `htdocs` para verificar el repositorio.
