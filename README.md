@@ -33,17 +33,17 @@ Para acceder al sistema los usuarios estando en la pagina de Bienvenida, deberan
 
 ## Inicio de Sesión
 1. Los usuarios registrados deben ingresar sus credenciales:
-  - **Correo electrónico**
-  - **Contraseña**
+    - 📧 **Correo electrónico**
+    - 🔒 **Contraseña**
 
 ## Registro de Nuevos Usuarios
 Si aún no tienes una cuenta, sigue estos pasos:
 1. Haz clic en **`REGISTRATE`**.
 2. Completa los cuadros de texto con tus datos:
-   - 📧 **Correo electrónico**
-   - 👤 **Nombre de usuario**
-   - 🔒 **Contraseña**
-   - 🔒 **Repite la contraseña** 
+    - 📧 **Correo electrónico**
+    - 👤 **Nombre de usuario**
+    - 🔒 **Contraseña**
+    - 🔒 **Repite la contraseña** 
 
 ¡Listo! Ya podrás acceder al sistema con tus nuevas credenciales.
 > ⚠️ Recuerda guardar tus datos de acceso en un lugar seguro.
@@ -75,10 +75,10 @@ Este apartado te guiará paso a paso en la instalación y configuración del ent
 Deberías ver la página de inicio de XAMPP o phpMyAdmin.
 
 ### Verificar la versión de PHP
-- Ejecuta el siguiente comando en la terminal (**CMD**):  
-  ```sh
-  php -v
-  ```
+Ejecuta el siguiente comando en la terminal (**CMD**):  
+    ```sh
+    php --version
+    ```
 Deberías ver la versión de PHP instalada en tu sistema.
 
 ## 📥 2. Descargar e Instalar Git
@@ -100,9 +100,9 @@ Deberías ver la versión de PHP instalada en tu sistema.
 ✅ Para confirmar que Git se instaló correctamente:
 1. Abre el símbolo del sistema (**CMD**)
 2. Ejecuta:
-  ```sh
-  git --version
-  ```
+    ```sh
+    git --version
+    ```
 
 Deberías ver la versión de Git instalada en tu sistema.
 
@@ -110,9 +110,9 @@ Deberías ver la versión de Git instalada en tu sistema.
 
 ### 1. Obtener la URL del repositorio
 🔹 Ve al repositorio en GitHub que deseas clonar 
-  ```plaintext
-  https://github.com/Aruajeg/Emocion_Vital-T_T
-  ```
+    ```plaintext
+    https://github.com/Aruajeg/Emocion_Vital-T_T
+    ```
 [Link de este repositorio](https://github.com/Aruajeg/Emocion_Vital-T_T)
 
 🔹 Haz clic en el botón verde **"Code"**  
@@ -122,24 +122,24 @@ Deberías ver la versión de Git instalada en tu sistema.
 🖥️ Desde la terminal (cmd):
 
 1. Navega al directorio htdocs de XAMPP:
-  ```sh
-  cd C:\xampp\htdocs
-  ```
+   ```sh
+    cd C:\xampp\htdocs
+   ```
   
   También puedes navegar manualmente a:
-  ```sh
-  C:\xampp\htdocs
-  ```
+    ```sh
+   C:\xampp\htdocs
+    ```
 
 2. Ejecuta el comando de clonación:
-  ```sh
-  git clone https://github.com/Aruajeg/Emocion_Vital-T_T
-  ```
+   ```sh
+    git clone https://github.com/Aruajeg/Emocion_Vital-T_T
+   ```
 
 ### 3. Acceder al directorio del proyecto
 📂 Después de clonar:
-  ```sh
-  cd Emocion_Vital-T_T
-  ```
-  O ingresa a la carpeta `htdocs` para verificar el repositorio.
+    ```sh
+   cd Emocion_Vital-T_T
+   ```
+    O ingresa a la carpeta `htdocs` para verificar el repositorio.
 
