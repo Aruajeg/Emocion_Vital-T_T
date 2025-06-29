@@ -108,7 +108,10 @@ Deberías ver la versión de Git instalada en tu sistema.
 
 ### 1. Obtener la URL del repositorio
   🔹 Ve al repositorio en GitHub que deseas clonar 
-  [Link de este repositorio](https://github.com/Aruajeg/Emocion_Vital-T_T)
+    ```plaintext
+    https://github.com/Aruajeg/Emocion_Vital-T_T
+    ```
+    [Link de este repositorio](https://github.com/duma12322/Implantacion)
   🔹 Haz clic en el botón verde **"Code"**  
   🔹 Copia la URL HTTPS
 
