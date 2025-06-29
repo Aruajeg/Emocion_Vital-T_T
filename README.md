@@ -114,6 +114,7 @@ Deberías ver la versión de Git instalada en tu sistema.
   https://github.com/usuario/repositorio.git
   ```
 [Link de este repositorio](https://github.com/Aruajeg/Emocion_Vital-T_T)
+
 🔹 Haz clic en el botón verde **"Code"**  
 🔹 Copia la URL HTTPS
 
