@@ -5,72 +5,112 @@
 
 }
 
-body{
-background-image: url('Imagen\ de\ WhatsApp\ 2025-06-26\ a\ las\ 10.08.53_592f2525.jpg');
+body {
+    background: linear-gradient(135deg, #9DC88D 0%, #F1B24A 100%);
+    background-image: url('Imagen de WhatsApp 2025-06-26 a las 10.08.53_592f2525.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
 }
 
 .form-register {
-    width: 400px;
-    background: #24303c;
-    padding: 30px;
+    width: 900px;
     margin: auto;
-    margin-top: 100px;
-    border-radius: 4px;
-    font-family: 'calibri';
-    color: white;
-    box-shadow: 7px 13px 37px #000;
+    margin-top: 60px;
+    font-family: 'calibri', Arial, sans-serif;
+    color: #164A41;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
 }
 
-.form-register h4{
-    font-size: 22px;
-    margin-bottom: 20px;
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+    margin-bottom: 18px;
 }
 
-.controls {
-width:100% ;
-background: #24383c;
-padding: 10px;
-border-radius: 4px;
-margin-bottom: 16px;
-border: 1px solid #1f53c5;
-font-family: 'calibri' ;
-font-size: 18px;
-color: white;
+@media (max-width: 900px) {
+    .form-register {
+        width: 98vw;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 18px 0;
+    }
 }
-.form-register h4{
-    font-size: 22px;
-    margin-bottom: 20px;
+
+.form-register h4 {
+    font-size: 32px;
+    margin-bottom: 28px;
+    color: #F1B24A;
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 2px 8px #164A4133;
 }
 
 .controls {
     width: 100%;
-    background-color: #24303c;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 16px;
-    border: 1px solid #1f53c5;
-    font-family: 'calibri';
-    font-size: 18px;
+    background: #FFFFFFCC;
+    padding: 18px;
+    border-radius: 12px;
+    border: 2px solid #4D774E;
+    font-family: 'calibri', Arial, sans-serif;
+    font-size: 24px;
+    color: #164A41;
+    transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 2px 8px 0 #9DC88D33;
+}
+
+.controls:focus {
+    border: 2.5px solid #F1B24A;
+    outline: none;
+    background: #FFF9F0;
+    color: #164A41;
+    box-shadow: 0 4px 16px 0 #F1B24A44;
 }
 
 .form-register p {
-height: 40px;
-text-align: center;
-font-size: 18px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    color: #FFFFFF;
+    margin-bottom: 0;
+}
 
+.form-register a {
+    color: #F1B24A;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
 }
 
 .form-register a:hover {
-color: white;
-text-decoration: underline;
+    color: #FFFFFF;
+    text-decoration: underline;
 }
 
 .form-register .botons {
     width: 100%;
-    background: #1f53c5 ;
+    background: linear-gradient(90deg, #F1B24A 0%, #4D774E 100%);
     border: none;
-    padding: 12px;
-    color: white; 
-    margin: 16px 0;
-    font-size: 16px;
+    padding: 18px;
+    color: #164A41;
+    margin: 28px 0 0 0;
+    font-size: 26px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px 0 #F1B24A33;
+    letter-spacing: 1px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    grid-column: 1 / -1;
+}
+
+.form-register .botons:hover {
+    background: linear-gradient(90deg, #4D774E 0%, #F1B24A 100%);
+    color: #FFFFFF;
+    box-shadow: 0 4px 16px 0 #4D774E44;
 }
