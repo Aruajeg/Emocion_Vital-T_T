@@ -35,7 +35,7 @@
             echo '<div class="alert">' . htmlspecialchars($_GET['mensaje']) . '</div>';
         }
         ?>
-        <form method="post" action="/registrarpacientelogica.php">
+        <form method="post" action="/php/registrarpacientelogica.php">
             <div>
                 <label for="nombre1">Primer Nombre:</label>
                 <input type="text" id="nombre1" name="nombre1" required class="form-control"

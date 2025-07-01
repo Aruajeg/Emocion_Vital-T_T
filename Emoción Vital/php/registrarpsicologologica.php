@@ -31,7 +31,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefono = trim($_POST["telefono"]);
     $n_documento = trim($_POST["n_documento"]);
     $tipo_documento = trim($_POST["tipo_documento"]);
-    $numero_documento = $_POST['numero_documento']; // Ajusta el nombre según tu formulario
+
+    // Validar que no exista el N_documento ni en paciente ni en psicologo
+    $n_documento_esc = $conn->real_escape_string($n_documento);
+    $sql_check = "SELECT 1 FROM paciente WHERE N_documento = '$n_documento_esc' LIMIT 1
+                  UNION
+                  SELECT 1 FROM psicologo WHERE N_documento = '$n_documento_esc' LIMIT 1";
+    $result_check = $conn->query($sql_check);
+
+    if ($result_check && $result_check->num_rows > 0) {
+        $mensaje = urlencode("Ya existe un registro con ese N° de documento.");
+        header("Location: /php/registrarpsicologo.php?mensaje=$mensaje");
+        exit();
+    }
 
     // Validaciones
     if (
@@ -58,24 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefono = $conn->real_escape_string($telefono);
     $n_documento = $conn->real_escape_string($n_documento);
     $tipo_documento = $conn->real_escape_string($tipo_documento);
-    $numero_documento = $conn->real_escape_string($numero_documento);
-
-    // Validar que no exista otro psicólogo con el mismo número de documento
-    $verificar = $conn->prepare("SELECT id_psicologo FROM psicologo WHERE numero_documento = ?");
-    $verificar->bind_param("s", $numero_documento);
-    $verificar->execute();
-    $verificar->store_result();
-
-    if($verificar->num_rows > 0){
-        echo '<script>
-            alert("Ya existe un psicólogo registrado con ese número de documento.");
-            window.location = "/php/registrarpsicologo.php";
-        </script>';
-        $verificar->close();
-        $conn->close();
-        exit;
-    }
-    $verificar->close();
 
     $sql = "INSERT INTO psicologo 
         (Nombre_1, Nombre_2, Apellido_1, Apellido_2, Correo, Telefono, N_documento, Tipo_documento)

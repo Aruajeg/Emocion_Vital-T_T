@@ -1,5 +1,5 @@
 <?php
-// Conexión y procesamiento del formulario
+// Ejemplo para registrar paciente (haz lo mismo en registrarpsicologologica.php)
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -22,13 +22,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sexo = trim($_POST["sexo"]);
     $desc_paciente = trim($_POST["desc_paciente"]);
 
-    // Validar que no exista otro paciente con el mismo N_documento
+    // Validar que no exista el N_documento ni en paciente ni en psicologo
     $n_documento_esc = $conn->real_escape_string($n_documento);
-    $sql_check = "SELECT 1 FROM paciente WHERE N_documento = '$n_documento_esc' LIMIT 1";
+    $sql_check = "SELECT 1 FROM paciente WHERE N_documento = '$n_documento_esc' LIMIT 1
+                  UNION
+                  SELECT 1 FROM psicologo WHERE N_documento = '$n_documento_esc' LIMIT 1";
     $result_check = $conn->query($sql_check);
 
     if ($result_check && $result_check->num_rows > 0) {
-        $mensaje = urlencode("Ya existe un paciente registrado con ese N° de documento.");
+        $mensaje = urlencode("Ya existe un registro con ese N° de documento.");
         header("Location: /php/registrarpaciente.php?mensaje=$mensaje");
         exit();
     }
@@ -77,5 +79,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: /php/registrarpaciente.php?mensaje=$mensaje");
         exit();
     }
+}
+
+// Repite la misma validación en registrarpsicologologica.php:
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // ...tus variables...
+    $n_documento = trim($_POST["n_documento"]);
+    $n_documento_esc = $conn->real_escape_string($n_documento);
+    $sql_check = "SELECT 1 FROM paciente WHERE N_documento = '$n_documento_esc' LIMIT 1
+                  UNION
+                  SELECT 1 FROM psicologo WHERE N_documento = '$n_documento_esc' LIMIT 1";
+    $result_check = $conn->query($sql_check);
+
+    if ($result_check && $result_check->num_rows > 0) {
+        $mensaje = urlencode("Ya existe un registro con ese N° de documento.");
+        header("Location: /php/registrarpsicologo.php?mensaje=$mensaje");
+        exit();
+    }
+
+    // ...validaciones y registro como ya tienes...
+}
+
+function validar_texto($texto) {
+    // Permite solo letras, espacios y acentos básicos
+    return preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u', $texto);
+}
+
+function validar_correo($correo) {
+    return filter_var($correo, FILTER_VALIDATE_EMAIL) !== false;
+}
+
+function validar_telefono($telefono) {
+    // Permite solo números y longitud entre 7 y 15 dígitos
+    return preg_match('/^[0-9]{7,15}$/', $telefono);
+}
+
+function validar_numero($numero) {
+    // Verifica que sea un número entero o decimal positivo
+    return is_numeric($numero);
 }
 ?>
