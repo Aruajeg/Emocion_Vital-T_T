@@ -1,0 +1,3 @@
+/Emoción Vital/vendor/
+git add .gitignore
+git commit -m "Ignorar directorio vendor"
