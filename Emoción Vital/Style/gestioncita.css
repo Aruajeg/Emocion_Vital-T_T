@@ -1,0 +1,83 @@
+body {
+    background: #f8f9fc;
+    background-image: url('../Imagen/Fondo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    color: #4e73df;
+    text-align: center;
+}
+
+.table-section {
+    margin: 40px auto;
+    max-width: 1100px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 30px 20px 40px 20px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.table-citas {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.table-citas th, .table-citas td {
+    border: 1px solid #e3e6f0;
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.table-citas th {
+    background: #4e73df;
+    color: #fff;
+    font-weight: bold;
+}
+
+.table-citas tr:nth-child(even) {
+    background: #f2f6fc;
+}
+
+.table-citas tr:hover {
+    background: #d1e0fa;
+}
+
+.no-data {
+    text-align: center;
+    color: #888;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.volver-inicio {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 24px;
+    background: #4e73df;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.volver-inicio:hover {
+    background: #2e59d9;
+    color: #fff;
+    text-decoration: none;
+}
+.volver-inicio i {
+    margin-right: 6px;
+}

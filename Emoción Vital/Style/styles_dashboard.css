@@ -110,6 +110,53 @@
   border-left: 4px solid transparent;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
+
+/* Justificar y centrar verticalmente los textos y los íconos del sidebar */
+.sb-sidenav .sb-sidenav-menu .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav-link .sb-nav-link-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    font-size: 1.15rem;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav-link span,
+.sb-sidenav .sb-sidenav-menu .nav-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav-link {
+    text-align: left;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav-link .sb-nav-link-icon + span {
+    margin-left: 8px;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav-link.active,
+.sb-sidenav .sb-sidenav-menu .nav-link:hover {
+    background: var(--verde-claro, #b2f7ef);
+    color: var(--verde-oscuro, #2b5876);
+    border-radius: 8px;
+    transition: background 0.2s;
+}
 .sb-sidenav .sb-sidenav-menu .nav-link.active,
 .sb-sidenav .sb-sidenav-menu .nav-link:hover,
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active,
