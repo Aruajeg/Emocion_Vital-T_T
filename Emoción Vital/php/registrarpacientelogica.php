@@ -24,9 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validar que no exista el N_documento ni en paciente ni en psicologo
     $n_documento_esc = $conn->real_escape_string($n_documento);
-    $sql_check = "SELECT 1 FROM paciente WHERE N_documento = '$n_documento_esc' LIMIT 1
-                  UNION
-                  SELECT 1 FROM psicologo WHERE N_documento = '$n_documento_esc' LIMIT 1";
+    $sql_check = "(
+        SELECT 1 FROM paciente WHERE N_documento = '$n_documento_esc'
+    ) UNION (
+        SELECT 1 FROM psicologo WHERE N_documento = '$n_documento_esc'
+    ) LIMIT 1";
     $result_check = $conn->query($sql_check);
 
     if ($result_check && $result_check->num_rows > 0) {
@@ -86,9 +88,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // ...tus variables...
     $n_documento = trim($_POST["n_documento"]);
     $n_documento_esc = $conn->real_escape_string($n_documento);
-    $sql_check = "SELECT 1 FROM paciente WHERE N_documento = '$n_documento_esc' LIMIT 1
-                  UNION
-                  SELECT 1 FROM psicologo WHERE N_documento = '$n_documento_esc' LIMIT 1";
+    $sql_check = "(
+        SELECT 1 FROM paciente WHERE N_documento = '$n_documento_esc'
+    ) UNION (
+        SELECT 1 FROM psicologo WHERE N_documento = '$n_documento_esc'
+    ) LIMIT 1";
     $result_check = $conn->query($sql_check);
 
     if ($result_check && $result_check->num_rows > 0) {
