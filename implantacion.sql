@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2025 a las 17:17:50
+-- Tiempo de generación: 01-07-2025 a las 19:48:13
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -2569,6 +2569,13 @@ CREATE TABLE `psicologo` (
   `RP2` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `psicologo`
+--
+
+INSERT INTO `psicologo` (`ID_psicologo`, `ID_usuario`, `ID_direccion`, `Nombre_1`, `Nombre_2`, `Apellido_1`, `Apellido_2`, `Contrasena`, `Status`, `Correo`, `Telefono`, `N_documento`, `Tipo_documento`, `P1`, `RP1`, `P2`, `RP2`) VALUES
+(1, 0, 0, 'Ismenia', 'Super', 'Suarez', 'Man', '', 'Activo', 'ismeani@gmail.com', '04123213321', '30485614', 'V', '¿Cuál es su color favorito?', '', '¿Lugar de nacimiento?', '');
+
 -- --------------------------------------------------------
 
 --
@@ -2577,6 +2584,8 @@ CREATE TABLE `psicologo` (
 
 CREATE TABLE `solicitar_cita` (
   `ID_solicitud` int(11) NOT NULL,
+  `ID_paciente` int(11) NOT NULL,
+  `ID_psicologo` int(11) NOT NULL,
   `ID_cronograma` int(11) NOT NULL,
   `Tipo_cita` enum('Presencial','Online') NOT NULL,
   `Fecha_cita` date NOT NULL,
@@ -2584,6 +2593,17 @@ CREATE TABLE `solicitar_cita` (
   `Descr_causa` varchar(250) NOT NULL,
   `Status` enum('Activo','Inactivo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `solicitar_cita`
+--
+
+INSERT INTO `solicitar_cita` (`ID_solicitud`, `ID_paciente`, `ID_psicologo`, `ID_cronograma`, `Tipo_cita`, `Fecha_cita`, `Hora_cita`, `Descr_causa`, `Status`) VALUES
+(1, 1, 1, 0, 'Presencial', '2025-06-05', '01:21:00', 'Depresion', 'Activo'),
+(2, 1, 1, 0, 'Presencial', '2025-07-04', '14:00:00', 'ASDASD', 'Inactivo'),
+(3, 1, 1, 0, 'Online', '2025-07-11', '11:26:00', 'asdasd', 'Inactivo'),
+(4, 1, 1, 0, 'Presencial', '2025-07-05', '13:20:00', 'asdasdasdsa', 'Inactivo'),
+(5, 1, 1, 0, 'Presencial', '2025-07-05', '13:20:00', 'asdasdasdsa', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -2600,6 +2620,14 @@ CREATE TABLE `usuario` (
   `N_documento` varchar(8) NOT NULL,
   `Tipo_documento` enum('V','E','P','J') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`ID_usuario`, `Username`, `Contrasena`, `Status`, `Correo`, `N_documento`, `Tipo_documento`) VALUES
+(1, 'Angelo', '827ccb0eea8a706c4c34a16891f84e7b', 'Activo', 'angelo@gmail.com', '', 'V'),
+(2, 'Pedro', '827ccb0eea8a706c4c34a16891f84e7b', 'Activo', 'pedro@gmail.com', '', 'V');
 
 --
 -- Índices para tablas volcadas
@@ -2826,19 +2854,19 @@ ALTER TABLE `parroquias`
 -- AUTO_INCREMENT de la tabla `psicologo`
 --
 ALTER TABLE `psicologo`
-  MODIFY `ID_psicologo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_psicologo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitar_cita`
 --
 ALTER TABLE `solicitar_cita`
-  MODIFY `ID_solicitud` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
