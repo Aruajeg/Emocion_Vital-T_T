@@ -1,6 +1,7 @@
 <?php
-require './vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 require './Services/helper.php';
+
 
 $action = $_POST['action'];
 
