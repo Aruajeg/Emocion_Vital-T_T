@@ -5,7 +5,7 @@ require './Services/helper.php';
 
 $action = $_POST['action'];
 
-// SECRET KEY 4/0AVMBsJh6q9aog11cMO8xme6jCLEu1xo-vChxkhwN7eaFkmX6O0RwW7CeNhmbhPreymwLi
+// SECRET KEY 4/0AVMBsJh6q9aog11cMO8xme6jCLEu1xo-vChxkhwN7eaFkmX6O0RwW7CeNhmbhPreymwLiw
 
 $client = getClient();
 $calendarService = new Google_Service_Calendar($client);
