@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-07-2025 a las 19:48:13
+-- Tiempo de generación: 02-07-2025 a las 23:52:01
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.4.8
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,6 +44,25 @@ CREATE TABLE `administrador` (
   `N_documento` varchar(8) NOT NULL,
   `Tipo_documento` enum('V','E','P','J') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cargo`
+--
+
+CREATE TABLE `cargo` (
+  `ID` int(11) NOT NULL,
+  `Descripcion` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `cargo`
+--
+
+INSERT INTO `cargo` (`ID`, `Descripcion`) VALUES
+(1, 'Administrador'),
+(2, 'Paciente');
 
 -- --------------------------------------------------------
 
@@ -1347,7 +1366,8 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`ID_paciente`, `ID_usuario`, `ID_direccion`, `Nombre_1`, `Nombre_2`, `Apellido_1`, `Apellido_2`, `Contrasena`, `Status`, `Correo`, `Telefono`, `N_documento`, `Tipo_documento`, `Fecha_nacimiento`, `P1`, `RP1`, `P2`, `RP2`, `Desc_paciente`, `Tipo_paciente`, `Sexo`) VALUES
-(1, 0, 0, 'Angelo', 'Gabriel', 'Lelli', 'Valera', '3051', 'Activo', 'angelo@gmail.com', '04125366488', '30485614', 'V', '0000-00-00', '¿Cuál es su color favorito?', 'Rojo', '¿Lugar de nacimiento?', 'Barquisimeto', 'Decadencia educativa', 'Adulto', 'Hombre');
+(1, 0, 0, 'Angelo', 'Gabriel', 'Lelli', 'Valera', '3051', 'Activo', 'angelo@gmail.com', '04125366488', '30485614', 'V', '0000-00-00', '¿Cuál es su color favorito?', 'Rojo', '¿Lugar de nacimiento?', 'Barquisimeto', 'Decadencia educativa', 'Adulto', 'Hombre'),
+(2, 0, 0, 'Alberth', 'Jesus', 'Espinoza', 'Gonzalez', '', 'Activo', 'Alberth@gmail.com', '04245093706', '28019622', 'V', '2000-11-28', '', '', '', '', 'Estres Post-traumatico', 'Adulto', '');
 
 -- --------------------------------------------------------
 
@@ -2603,7 +2623,8 @@ INSERT INTO `solicitar_cita` (`ID_solicitud`, `ID_paciente`, `ID_psicologo`, `ID
 (2, 1, 1, 0, 'Presencial', '2025-07-04', '14:00:00', 'ASDASD', 'Inactivo'),
 (3, 1, 1, 0, 'Online', '2025-07-11', '11:26:00', 'asdasd', 'Inactivo'),
 (4, 1, 1, 0, 'Presencial', '2025-07-05', '13:20:00', 'asdasdasdsa', 'Inactivo'),
-(5, 1, 1, 0, 'Presencial', '2025-07-05', '13:20:00', 'asdasdasdsa', 'Activo');
+(5, 1, 1, 0, 'Presencial', '2025-07-05', '13:20:00', 'asdasdasdsa', 'Activo'),
+(6, 2, 1, 0, 'Presencial', '2025-07-16', '19:01:00', 'MIGRAÑA', 'Inactivo');
 
 -- --------------------------------------------------------
 
@@ -2614,20 +2635,19 @@ INSERT INTO `solicitar_cita` (`ID_solicitud`, `ID_paciente`, `ID_psicologo`, `ID
 CREATE TABLE `usuario` (
   `ID_usuario` int(11) NOT NULL,
   `Username` varchar(250) NOT NULL,
-  `Contrasena` varchar(34) NOT NULL,
-  `Status` enum('Activo','Inactivo') NOT NULL,
+  `Contrasena` varchar(250) NOT NULL,
+  `Status` enum('Activo','Incativo') NOT NULL,
   `Correo` varchar(250) NOT NULL,
-  `N_documento` varchar(8) NOT NULL,
-  `Tipo_documento` enum('V','E','P','J') NOT NULL
+  `ID_cargo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`ID_usuario`, `Username`, `Contrasena`, `Status`, `Correo`, `N_documento`, `Tipo_documento`) VALUES
-(1, 'Angelo', '827ccb0eea8a706c4c34a16891f84e7b', 'Activo', 'angelo@gmail.com', '', 'V'),
-(2, 'Pedro', '827ccb0eea8a706c4c34a16891f84e7b', 'Activo', 'pedro@gmail.com', '', 'V');
+INSERT INTO `usuario` (`ID_usuario`, `Username`, `Contrasena`, `Status`, `Correo`, `ID_cargo`) VALUES
+(1, 'Alberth', '81dc9bdb52d04dc20036dbd8313ed055', '', 'Alberth@gmail.com', 1),
+(2, 'Random', '81dc9bdb52d04dc20036dbd8313ed055', '', 'Random@gmail.com', 2);
 
 --
 -- Índices para tablas volcadas
@@ -2638,6 +2658,12 @@ INSERT INTO `usuario` (`ID_usuario`, `Username`, `Contrasena`, `Status`, `Correo
 --
 ALTER TABLE `administrador`
   ADD PRIMARY KEY (`ID_admin`);
+
+--
+-- Indices de la tabla `cargo`
+--
+ALTER TABLE `cargo`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indices de la tabla `ciudades`
@@ -2760,7 +2786,8 @@ ALTER TABLE `solicitar_cita`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`ID_usuario`);
+  ADD PRIMARY KEY (`ID_usuario`),
+  ADD KEY `ID_cargo` (`ID_cargo`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -2771,6 +2798,12 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `administrador`
   MODIFY `ID_admin` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `cargo`
+--
+ALTER TABLE `cargo`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `ciudades`
@@ -2830,7 +2863,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `ID_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `pago`
@@ -2860,13 +2893,23 @@ ALTER TABLE `psicologo`
 -- AUTO_INCREMENT de la tabla `solicitar_cita`
 --
 ALTER TABLE `solicitar_cita`
-  MODIFY `ID_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`ID_cargo`) REFERENCES `cargo` (`ID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

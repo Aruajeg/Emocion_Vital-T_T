@@ -1,26 +1,34 @@
 <?php
-
+    $Correo = $_POST['correo'];
+    $Contrasena = $_POST['contrasena'];    
     session_start();
 
     include 'conexion_be.php';
 
-    $Correo = $_POST['correo'];
-    $Contrasena = $_POST['contrasena'];
+    $consulta="SELECT * FROM usuario WHERE correo='$Correo' and contrasena= MD5('$Contrasena')";
+    $resultado=mysqli_query($conexion, $consulta);
 
-    $validar_login = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo='$Correo' and contrasena= MD5('$Contrasena')");
+    $filas=mysqli_fetch_array($resultado);
 
-    if(mysqli_num_rows($validar_login) > 0){
-        $_SESSION['usuario'] = $Correo;
+    if($filas['ID_cargo']==1){ //Administrador
+        $_SESSION['usuario'] = $Correo;    
         header("location: /php/dashboard.php");
         exit;
-    } else {
+    }else
+    if($filas['ID_cargo']==2){ //Paciente
+        $_SESSION['usuario'] = $Correo;
+        header("location: /php/dashboard_paciente.php");
+        exit;
+    }
+
+    else {
+        
         echo '<script> 
             alert("Correo o Contraseña incorrectos, por favor verifique los datos e intente nuevamente");
             window.location = "../login_register.php";
         </script>';
         exit;
     }
-
-echo $Contrasena;
-
-?>
+    mysqli_free_result($resultado);
+    mysqli_close($conexion);
+    ?>

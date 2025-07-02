@@ -6,7 +6,7 @@ session_start();
 $host = "localhost";
 $usuario = "root";
 $password = "";
-$base_datos = "emocionvital";
+$base_datos = "implantacion";
 
 // Crear conexión
 $conexion = new mysqli($host, $usuario, $password, $base_datos);

@@ -1,7 +1,15 @@
 <?php
 
     include 'conexion_be.php';
+    $ID_cargo = 2;
 
+//VALIDAR QUE EL CARGO EXISTA
+$sql_verificar = "SELECT ID FROM cargo WHERE ID = $ID_cargo";
+$resultado = mysqli_query($conexion, $sql_verificar);
+
+if (mysqli_num_rows($resultado) === 0){
+    die("Error: El cargo seleccionado no existe (ID: $ID_cargo)");
+}   
     $Correo = $_POST['correo'];
     $Username = $_POST['username'];
     $Contrasena = $_POST['contrasena'];
@@ -30,12 +38,7 @@
         </script>';
         exit();
     }
-
-    //Verificar que las contraseñas coincidan
-    if($Contrasena == $verificar_contrasena){
-
-        $ejecutar = mysqli_query($conexion, $query);
-
+    
     if($ejecutar){
         echo'
         <script>
@@ -49,13 +52,6 @@
             window.location = "../login_register.php";
         </script>';
     }
-    }else{
-        echo '<script> 
-            alert("Las contraseñas NO coinciden");
-            window.location = "../login_register.php";
-        </script>';
-    }
-
 
     mysqli_close($conexion);
 ?>
