@@ -1,4 +1,7 @@
 <?php
+// Iniciar sesión para manejar mensajes y datos previos
+session_start();
+
 // Configuración de la base de datos
 $host = "localhost";
 $usuario = "root";
@@ -188,11 +191,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $mensaje = "Errores de validación: " . implode(", ", $errores);
         $tipo_mensaje = "error";
+        
+        // Guardar datos previos en sesión para mantenerlos en el formulario
+        $_SESSION['datos_previos'] = [
+            'Tipo_Cedula' => $tipo_cedula,
+            'Cedula' => $cedula,
+            'Primer_Nombre' => $primer_nombre,
+            'Segundo_Nombre' => $segundo_nombre,
+            'Primer_Apellido' => $primer_apellido,
+            'Segundo_Apellido' => $segundo_apellido,
+            'Num_Hijos' => $num_hijos,
+            'Teléfono' => $telefono,
+            'Fecha_Nacimiento' => $fecha_nacimiento,
+            'Correo' => $correo,
+            'ID_Direccion' => $id_direccion,
+            'StatusPaciente' => $status_paciente
+        ];
+        
+        // Redirigir de vuelta al formulario con mensaje de error
+        $_SESSION['mensaje'] = $mensaje;
+        $_SESSION['tipo_mensaje'] = $tipo_mensaje;
+        header("Location: registro_pacientes.php");
+        exit();
     }
     
 } else {
     $mensaje = "No se recibieron datos del formulario";
     $tipo_mensaje = "error";
+    
+    // Redirigir de vuelta al formulario con mensaje de error
+    $_SESSION['mensaje'] = $mensaje;
+    $_SESSION['tipo_mensaje'] = $tipo_mensaje;
+    header("Location: registro_pacientes.php");
+    exit();
 }
 
 // Cerrar la conexión
@@ -248,6 +279,6 @@ $conexion->close();
         <p><?php echo htmlspecialchars($mensaje); ?></p>
     </div>
     
-    <a href="registro_pacientes.html" class="boton">Volver al formulario</a>
+    <a href="registro_pacientes.php" class="boton">Volver al formulario</a>
 </body>
 </html>
