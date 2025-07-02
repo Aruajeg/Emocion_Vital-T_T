@@ -102,7 +102,7 @@ if(isset($_POST['agendar'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contact Form</title>
+    <title>CALENDAR</title>
      <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -113,7 +113,8 @@ if(isset($_POST['agendar'])){
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
       <style type="text/css">
           body{
-            background-color: #0174DF;
+            background-image: url('../Imagen/Fondo.png');
+            background-size: cover;
           }
 
           
@@ -121,14 +122,25 @@ if(isset($_POST['agendar'])){
                 background-color: #fff;
                 margin: 10% 35%;
                 width: 30%;
-                border: 2px solid;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+                border-radius: 20px;
                 padding: 15px;
+            }
+            .form-group input{
+              background-color: #d3fac5;
+            }
+            .btn-btn-primary-btn-block{
+            background-color: #f1b24a;
+            color: #ffffff;
+            margin: 0px 3%;
+            width: 94%;
             }
           @media screen AND (max-width: 480px){
             form{
                 margin: 0px 3%;
                 width: 94%;
-            }
+
+                }
           }
       </style>
 </head>
@@ -150,7 +162,7 @@ if(isset($_POST['agendar'])){
         <?php
       }
       ?><br>
-      <button type="button" class="btn btn-primary btn-block" onclick="reload();">BACK</button>
+      <button type="button" class="btn btn-primary btn-block" onclick="reload();">ATRAS</button>
       <?php
     }
     else{
@@ -159,10 +171,10 @@ if(isset($_POST['agendar'])){
 
       <div class="row">
         <div class="col-sm-12">
-            <label>Name</label>
+            <label>Nombre</label>
               <div class="form-group">
                   <div class="input-group ">
-                      <input type="text" class="form-control "  name="username" placeholder="Enter your name" autocomplete="off" />
+                      <input type="text" class="form-control "  name="username" placeholder="Utiliza tu nómbre y apellido" autocomplete="off" />
                     
                   </div>
               </div>
@@ -171,7 +183,7 @@ if(isset($_POST['agendar'])){
       <div class="row">
 
           <div class="col-sm-12">
-            <label>DateTime</label>
+            <label>Fecha</label>
               <div class="form-group">
                   <div class="input-group date"  id="datetimepicker1" data-target-input="nearest">
                       <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" name="date_start"/>
@@ -188,7 +200,7 @@ if(isset($_POST['agendar'])){
   
 
  
-  <button type="submit" class="btn btn-primary btn-block" name="agendar">Submit</button>
+  <button type="submit" class="btn-btn-primary-btn-block" name="agendar">GENERAR CITA</button>
    <?php 
     }
     ?>

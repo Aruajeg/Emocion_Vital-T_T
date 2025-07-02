@@ -50,7 +50,7 @@ function mostrar_tabla($titulo, $sql, $conn) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Consultar Citas</title>
+    <title>Gestionar Registros</title>
     <link rel="stylesheet" href="/Style/gestioncita.css">
 
     <style>
@@ -79,7 +79,7 @@ function mostrar_tabla($titulo, $sql, $conn) {
 </head>
 <body>
     <div class="container" style="max-width:900px;margin:40px auto;">
-        <h2>Consultar Citas</h2>
+        <h2>Gestionar Registros</h2>
         <?php
         // Tabla PACIENTE
         mostrar_tabla(
