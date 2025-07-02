@@ -42,6 +42,13 @@ body{
 }
 
 .container a{
+    color: #164a41;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
+
+.container button{
     background-color: #f1b24a;
     color: #ffffff;
     font-size: 12px;
@@ -53,6 +60,11 @@ body{
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
+}
+
+.container button.hidden{
+    background-color: transparent;
+    border-color: #ffffff;
 }
 
 .container form{

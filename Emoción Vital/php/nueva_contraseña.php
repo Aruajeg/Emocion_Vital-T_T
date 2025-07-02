@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="/Style/style_recovery.css">
+    <link rel="stylesheet" href="/Style/style_nueva_pass.css">
     <title>RESTAURAR</title>
 </head>
 
@@ -15,16 +15,16 @@
         <div class="form-container sign-in">
             <form id=loginForm" action="" method="POST">
                 <h1>Recuperar Contraseña</h1>
-                <input type="email" placeholder="Correo electrónico" name="correo" required>
-                <a href="/php/nueva_contraseña.php">Solicitar código</a>
+                <input type="password" placeholder="Nueva contraseña" name="correo" required>
+                <input type="password" placeholder="Repite la contraseña" name="correo" required>
+                <button>Cambiar</button>
             </form>
         </div>
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-right">
-                    <h1>¿Haz olvidado tu contraseña?</h1>
-                    <p>Ingresa tu correo y enviaremos un código de 
-                        verificación para que recuperes tu cuenta</p>
+                    <h1>Estas a solo un paso</h1>
+                    <p>Ingresa tu nueva contraseña</p>
                 </div>
             </div>
         </div>
