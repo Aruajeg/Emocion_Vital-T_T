@@ -24,10 +24,20 @@
         .volver-inicio i {
             margin-right: 6px;
         }
+        .page-title {
+            text-align: center;
+            color:rgb(22, 74, 65);
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
     <div class="container" style="max-width:600px;margin:40px auto;">
+        <h1 class="page-title">Registro de Psicólogo</h1>
         <h2>Registro de Psicólogo</h2>
         <?php
         if (isset($_GET['mensaje']) && $_GET['mensaje'] !== '') {

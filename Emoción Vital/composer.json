@@ -1,8 +1,5 @@
 {
     "require": {
         "google/apiclient": "^2.18"
-    },
-    "require-dev": {
-        "barryvdh/laravel-ide-helper": "^3.5"
     }
 }

@@ -29,7 +29,7 @@ if(isset($_POST['modificar'])) {
         $stmt->execute();
         $stmt->close();
         $conn->close();
-        header("Location: /php/consultarcitas.php?id=$id&mensaje=Modificación exitosa");
+        header("Location: /php/consultarcitas_paciente.php?id=$id&mensaje=Modificación exitosa");
         exit;
     }
 }

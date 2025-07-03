@@ -34,7 +34,7 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
         <meta name="author" content="" />
         <title>PACIENTE</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="/Style/styles_dashboard.css" rel="stylesheet" />
+        <link href="/Style/styles_dashboard_pacientes.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -43,7 +43,7 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
             <button class="btn btn-link btn-lg order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
             <img src="/Imagen/Psico4.png" alt="Logo del consultorio" style="height:50px; vertical-align:middle; margin-left:20px;">
-            <a class="navbar-brand ps-3" href="#">EMOCIÓOOOON VITAL</a>
+            <a class="navbar-brand ps-3" href="#">EMOCIÓN VITAL</a>
             <!-- Navbar Search-->
             <!--<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -156,6 +156,15 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
             </div>
         </div>
         <div class="col-xl-3 col-md-6" style="min-width:270px; flex:1 1 270px; max-width:350px;">
+            <div class="card bg-secondary text-white mb-4" style="border-radius:10px;">
+                <div class="card-body" style="font-size:20px;">AGENDAR EN CALENDAR</div>
+                <div class="card-footer d-flex align-items-center justify-content-between" style="background:rgba(0,0,0,0.07); border-radius:0 0 10px 10px;">
+                    <a class="small text-white stretched-link" href="/calendar.php" onclick="mostrarFormularioCita();return false;">Ir a calendar...</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6" style="min-width:270px; flex:1 1 270px; max-width:350px;">
             <div class="card bg-warning text-white mb-4" style="border-radius:10px;">
                 <div class="card-body" style="font-size:20px;">CITAS AGENDADAS</div>
                 <div class="card-footer d-flex align-items-center justify-content-between" style="background:rgba(0,0,0,0.07); border-radius:0 0 10px 10px;">
@@ -168,10 +177,10 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
 </div>
                         
                         
-                     <!--</div>
-                </main>-->
-                <!--<div id="layoutSidenav_footer">
-                    <footer class="sb-footer text-center text-lg-start bg-dark text-muted">-->
+                     </div>
+                </main>
+                <div id="layoutSidenav_footer">
+                    <footer class="papa2">
                         <!-- Section: Social media -->
                         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
                             <!-- Left -->
@@ -206,7 +215,7 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
                         <!-- Section: Social media -->
 
                         <!-- Section: Links  -->
-                        <section class="">
+                        <section class="papa">
                             <div class="row text-left">
                                 <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
                                     <h5 class="text-uppercase">Enlaces útiles</h5>
@@ -269,7 +278,7 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
                         <!-- Section: Links  -->
 
                         <!-- Copyright -->
-                        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                        <div class="text-center p-4" style="background-color: rgb(255, 255, 255);">
                             © 2025 EMOCIÓN VITAL. Todos los derechos reservados.
                         </div>
                         <!-- Copyright -->
