@@ -44,9 +44,9 @@ $sql = "INSERT INTO paciente (Nombre_1, Nombre_2, Apellido_1, Apellido_2, Correo
 
 if ($conn->query($sql) === TRUE) {
     // Redirección a dashboard.php después de registro exitoso
-    header("Location: ../php/dashboard.php?mensaje=Paciente registrado exitosamente");
+    header("Location: ../php/dashboard_paciente.php?mensaje=Paciente registrado exitosamente");
 } else {
-    header("Location: ../php/registrarpaciente.php?mensaje=Error al registrar paciente: " . $conn->error);
+    header("Location: ../php/registrarpaciente_paciente.php?mensaje=Error al registrar paciente: " . $conn->error);
 }
 
 $conn->close();

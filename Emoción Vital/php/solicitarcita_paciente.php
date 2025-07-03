@@ -1,3 +1,45 @@
+<?php
+session_start();
+if(!isset($_SESSION['usuario'])) {
+    echo '<script> 
+        alert("Debes iniciar sesión para tener acceso a esta página");
+        window.location = "index.php";
+        </script>';
+    session_destroy();
+    die();
+}
+
+// Conexión a la base de datos
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "implantacion";
+$conn = new mysqli($host, $user, $pass, $db);
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
+}
+
+// Obtener el ID del usuario de la sesión
+$id_usuario = $_SESSION['id_usuario']; // Asegúrate de que esto esté configurado al iniciar sesión
+
+// Obtener solo los pacientes asociados a este usuario
+$pacientes = [];
+$res_pac = $conn->prepare("SELECT id_paciente, Nombre_1, Apellido_1 FROM paciente WHERE id_usuario = ?");
+$res_pac->bind_param("i", $id_usuario);
+$res_pac->execute();
+$result = $res_pac->get_result();
+while ($row = $result->fetch_assoc()) {
+    $pacientes[] = $row;
+}
+$res_pac->close();
+
+// Obtener psicólogos
+$psicologos = [];
+$res_psico = $conn->query("SELECT id_psicologo, Nombre_1, Apellido_1 FROM psicologo");
+while ($row = $res_psico->fetch_assoc()) {
+    $psicologos[] = $row;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -64,7 +106,7 @@
         }
         .page-title {
             text-align: center;
-            color: #4e73df;
+            color:rgb(22, 74, 65);
             margin-bottom: 30px;
             font-size: 28px;
             font-weight: bold;
@@ -117,49 +159,15 @@
             border-color: #ffeeba;
             cursor: not-allowed;
         }
-        .page-title {
-            text-align: center;
-            color:rgb(22, 74, 65);
-            margin-bottom: 30px;
-            font-size: 28px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1 class="page-title">Solicitar Cita</h1>
-        <h2 class="page-title">Solicitar Cita</h2>
         <?php
         if (isset($_GET['mensaje']) && $_GET['mensaje'] !== '') {
             echo '<div class="alert">' . htmlspecialchars($_GET['mensaje']) . '</div>';
-        }
-
-        // Conexión a la base de datos
-        $host = "localhost";
-        $user = "root";
-        $pass = "";
-        $db = "implantacion";
-        $conn = new mysqli($host, $user, $pass, $db);
-        if ($conn->connect_error) {
-            die("Error de conexión: " . $conn->connect_error);
-        }
-
-        // Obtener pacientes
-        $pacientes = [];
-        $res_pac = $conn->query("SELECT id_paciente, Nombre_1, Apellido_1 FROM paciente");
-        while ($row = $res_pac->fetch_assoc()) {
-            $pacientes[] = $row;
-        }
-
-        // Obtener psicólogos
-        $psicologos = [];
-        $res_psico = $conn->query("SELECT id_psicologo, Nombre_1, Apellido_1 FROM psicologo");
-        while ($row = $res_psico->fetch_assoc()) {
-            $psicologos[] = $row;
         }
         ?>
         <form method="post" action="/php/solicitarcitalogica_paciente.php" id="citaForm">
@@ -167,12 +175,16 @@
             <div>
                 <label for="id_paciente">Paciente:</label>
                 <select id="id_paciente" name="id_paciente" required class="form-control">
-                    <option value="">Seleccione un paciente</option>
-                    <?php foreach($pacientes as $p): ?>
-                        <option value="<?= htmlspecialchars($p['id_paciente']) ?>">
-                            <?= htmlspecialchars($p['Nombre_1'] . ' ' . $p['Apellido_1']) ?>
-                        </option>
-                    <?php endforeach; ?>
+                    <?php if(empty($pacientes)): ?>
+                        <option value="">No tienes pacientes registrados</option>
+                    <?php else: ?>
+                        <option value="">Seleccione un paciente</option>
+                        <?php foreach($pacientes as $p): ?>
+                            <option value="<?= htmlspecialchars($p['id_paciente']) ?>">
+                                <?= htmlspecialchars($p['Nombre_1'] . ' ' . $p['Apellido_1']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </select>
             </div>
             

@@ -24,7 +24,7 @@
         .volver-inicio i {
             margin-right: 6px;
         }
-                .page-title {
+            .page-title {
             text-align: center;
             color:rgb(22, 74, 65);
             margin-bottom: 30px;
@@ -45,7 +45,7 @@
             echo '<div class="alert">' . htmlspecialchars($_GET['mensaje']) . '</div>';
         }
         ?>
-        <form method="post" action="/php/registrarpacientelogica.php">
+        <form method="post" action="/php/registrarpacientelogica_paciente.php">
             <div>
                 <label for="nombre1">Primer Nombre:</label>
                 <input type="text" id="nombre1" name="nombre1" required class="form-control"
@@ -113,7 +113,7 @@
                 <button type="submit" class="btn btn-primary">Registrar Paciente</button>
             </div>
         </form>
-        <a href="/php/dashboard.php" class="volver-inicio">
+        <a href="/php/dashboard_paciente.php" class="volver-inicio">
             <i class="fas fa-arrow-left"></i> Volver al inicio
         </a>
     </div>

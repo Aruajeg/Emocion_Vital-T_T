@@ -5,13 +5,17 @@ if(!isset($_SESSION['usuario'])) {
     exit();
 }
 
-// Datos de conexión
+// Verificar que el id_usuario está en la sesión
+if(!isset($_SESSION['id_usuario'])) {
+    die("Error: No se encontró el ID de usuario en la sesión");
+}
+$id_usuario = $_SESSION['id_usuario'];
+
+// Conexión a la base de datos
 $host = "localhost";
 $user = "root";
 $pass = "";
 $db = "implantacion";
-
-// Conexión a la base de datos
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
@@ -33,7 +37,19 @@ if(!in_array($tipo_consulta, $tipos_permitidos)) {
     exit();
 }
 
-// Insertar en la base de datos
+// Validar que el paciente pertenece al usuario actual (seguridad adicional)
+$stmt_verificar = $conn->prepare("SELECT id_paciente FROM paciente WHERE id_paciente = ? AND id_usuario = ?");
+$stmt_verificar->bind_param("ii", $id_paciente, $id_usuario);
+$stmt_verificar->execute();
+$stmt_verificar->store_result();
+
+if($stmt_verificar->num_rows === 0) {
+    header("Location: ../php/solicitarcita_paciente.php?mensaje=Paciente no válido");
+    exit();
+}
+$stmt_verificar->close();
+
+// Insertar en la base de datos con consulta preparada
 $sql = "INSERT INTO solicitar_cita (
     id_paciente, 
     id_psicologo, 
@@ -42,23 +58,33 @@ $sql = "INSERT INTO solicitar_cita (
     fecha_cita, 
     hora_cita, 
     descr_causa, 
-    Status
-) VALUES (
-    '$id_paciente', 
-    '$id_psicologo', 
-    '$tipo_cita', 
-    '$tipo_consulta', 
-    '$fecha', 
-    '$hora', 
-    '$motivo', 
-    'Activo'
-)";
+    Status,
+    ID_usuario
+) VALUES (?, ?, ?, ?, ?, ?, ?, 'Activo', ?)";
 
-if ($conn->query($sql) === TRUE) {
-    header("Location: ../php/dashboard_paciente.php?mensaje=Cita agendada exitosamente");
-} else {
-    header("Location: ../php/solicitarcita_paciente.php?mensaje=Error al agendar cita: " . $conn->error);
+$stmt = $conn->prepare($sql);
+if($stmt === false) {
+    die("Error en la preparación de la consulta: " . $conn->error);
 }
 
+$stmt->bind_param("iisssssi", 
+    $id_paciente, 
+    $id_psicologo, 
+    $tipo_cita, 
+    $tipo_consulta,
+    $fecha, 
+    $hora, 
+    $motivo,
+    $id_usuario
+);
+
+if($stmt->execute()) {
+    header("Location: ../php/dashboard_paciente.php?mensaje=Cita agendada exitosamente");
+} else {
+    error_log("Error al agendar cita: " . $stmt->error);
+    header("Location: ../php/solicitarcita_paciente.php?mensaje=Error al agendar cita");
+}
+
+$stmt->close();
 $conn->close();
 ?>

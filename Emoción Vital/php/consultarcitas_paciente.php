@@ -9,6 +9,9 @@ if(!isset($_SESSION['usuario'])) {
     die();
 }
 
+// Obtener el ID del usuario de la sesión
+$id_usuario = $_SESSION['id_usuario']; // Asegúrate de que este valor se establece al iniciar sesión
+
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -36,14 +39,14 @@ switch($orden) {
         break;
     case 'fecha_desc':
         $order_by = "sc.fecha_cita DESC, sc.hora_cita DESC";
-        $orden_descripcion = "Orden: Fecha (La más lejana primero)";
+        $orden_descripcion = "Orden: Fecha (La más alejada primero)";
         break;
     default:
         $order_by = "sc.ID_solicitud ASC";
         $orden_descripcion = "Orden: ID (Más antiguo primero)";
 }
 
-// Consulta SQL con ordenamiento dinámico (incluyendo Tipo_consulta)
+// Consulta SQL con consulta preparada
 $sql = "
 SELECT 
     sc.ID_solicitud,
@@ -60,11 +63,14 @@ SELECT
 FROM solicitar_cita sc
 INNER JOIN paciente p ON sc.id_paciente = p.id_paciente
 INNER JOIN psicologo ps ON sc.id_psicologo = ps.id_psicologo
-WHERE sc.Status = 'Activo'
+WHERE sc.Status = 'Activo' AND sc.id_usuario = ?
 ORDER BY $order_by
 ";
 
-$result = $conn->query($sql);
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -202,7 +208,7 @@ $result = $conn->query($sql);
 </head>
 <body>
     <div class="table-section">
-        <h1 style="text-align:center; margin-bottom:30px;">Consultar Citas Activas</h1>
+        <h1 style="text-align:center; margin-bottom:30px;">Mis Citas Activas</h1>
         
         <!-- Filtros de ordenamiento -->
         <div class="filtros-container">
@@ -211,8 +217,8 @@ $result = $conn->query($sql);
                 <select name="orden" id="orden">
                     <option value="id_asc" <?= $orden == 'id_asc' ? 'selected' : '' ?>>ID (Más antiguo primero)</option>
                     <option value="id_desc" <?= $orden == 'id_desc' ? 'selected' : '' ?>>ID (Más nuevo primero)</option>
-                    <option value="fecha_asc" <?= $orden == 'fecha_asc' ? 'selected' : '' ?>>Fecha (La más próxima primero)</option>
-                    <option value="fecha_desc" <?= $orden == 'fecha_desc' ? 'selected' : '' ?>>Fecha (La más lejana primero)</option>
+                    <option value="fecha_asc" <?= $orden == 'fecha_asc' ? 'selected' : '' ?>>Fecha (La más proxima primero)</option>
+                    <option value="fecha_desc" <?= $orden == 'fecha_desc' ? 'selected' : '' ?>>Fecha (La más alejada primero)</option>
                 </select>
                 <button type="submit">Aplicar</button>
                 <span class="orden-actual"><?= $orden_descripcion ?></span>
@@ -283,7 +289,7 @@ $result = $conn->query($sql);
                 </table>
             </div>
         <?php else: ?>
-            <div class="no-data">No hay citas activas en este momento.</div>
+            <div class="no-data">No tienes citas activas en este momento.</div>
         <?php endif; ?>
         
         <div style="text-align: center; margin-top: 30px;">
@@ -292,6 +298,9 @@ $result = $conn->query($sql);
             </a>
         </div>
     </div>
-    <?php $conn->close(); ?>
+    <?php 
+    $stmt->close();
+    $conn->close(); 
+    ?>
 </body>
 </html>

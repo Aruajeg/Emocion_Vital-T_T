@@ -80,10 +80,10 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
                                 <div class="sb-nav-link-icon"><i class="fas fa-calendar-plus"></i></div>
                                 <span>Solicitar Cita</span>
                             </a>
-                            <!--<<a class="nav-link" href="/php/registrarpaciente.php">
+                            <a class="nav-link" href="/php/registrarpaciente_paciente.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-plus"></i></div>
                                 <span>Registrar Paciente</span>
-                            </a>-->
+                            </a>
                             <!--<<a class="nav-link" href="/php/registrarpsicologo.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-md"></i></div>
                                 <span>Registrar Psicólogo</span>
