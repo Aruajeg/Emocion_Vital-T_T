@@ -58,7 +58,6 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Cuenta</a></li>
                         <li><a class="dropdown-item" href="/php/cerrar_sesion.php">Cerrar Sesión</a></li>
-                        <li><a class="dropdown-item" href="/index.html">Salir</a></li>
                     </ul>
                 </li>
             </ul>
@@ -271,7 +270,7 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
 
                         <!-- Copyright -->
                         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                            © 2023 EMOCIÓN VITAL. Todos los derechos reservados.
+                            © 2025 EMOCIÓN VITAL. Todos los derechos reservados.
                         </div>
                         <!-- Copyright -->
                     </footer>
