@@ -56,7 +56,9 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Cuenta</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#" id="btnPerfilUsuario" data-bs-toggle="modal" data-bs-target="#perfilModal">Cuenta</a>
+                        </li>
                         <li><a class="dropdown-item" href="/php/cerrar_sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
@@ -331,6 +333,33 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
                 </div>
             </div>
         </div>
+
+        <!-- Modal Perfil de Usuario -->
+        <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="perfilModalLabel">Perfil de Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body" id="perfilModalBody">
+                <!-- Aquí se cargará el perfil vía AJAX -->
+                <div class="text-center"><div class="spinner-border text-primary"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+        document.getElementById('btnPerfilUsuario').addEventListener('click', function(e) {
+            var modalBody = document.getElementById('perfilModalBody');
+            modalBody.innerHTML = '<div class="text-center"><div class="spinner-border text-primary"></div></div>';
+            fetch('/php/perfil_modal.php')
+                .then(response => response.text())
+                .then(html => { modalBody.innerHTML = html; });
+        });
+        </script>
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>
