@@ -19,16 +19,16 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Función para mostrar tablas de forma agradable
-function mostrar_tabla($titulo, $sql, $conn) {
+// Función para mostrar tablas de forma agradable con encabezados personalizados y exclusión de columnas
+function mostrar_tabla($titulo, $sql, $conn, $headers) {
     $result = $conn->query($sql);
     echo "<div class='table-section'>";
     echo "<h2>$titulo</h2>";
     if ($result && $result->num_rows > 0) {
         echo "<div class='table-container'><table class='table-citas'><tr>";
-        // Encabezados
-        while ($fieldinfo = $result->fetch_field()) {
-            echo "<th>" . htmlspecialchars($fieldinfo->name) . "</th>";
+        // Encabezados personalizados
+        foreach ($headers as $header) {
+            echo "<th>" . htmlspecialchars($header) . "</th>";
         }
         echo "</tr>";
         // Filas
@@ -84,14 +84,23 @@ function mostrar_tabla($titulo, $sql, $conn) {
         // Tabla PACIENTE
         mostrar_tabla(
             "Pacientes",
-            "SELECT ID_paciente, Nombre_1, Nombre_2, Apellido_1, Apellido_2, Correo, Telefono, N_documento, Tipo_documento, Fecha_nacimiento, Sexo FROM paciente",
-            $conn
+            "SELECT Nombre_1, Nombre_2, Apellido_1, Apellido_2, Correo, Telefono, N_documento, Tipo_documento, Fecha_nacimiento, Sexo FROM paciente",
+            $conn,
+            [
+                "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido",
+                "Correo", "Teléfono", "Número de Documento", "Tipo de Documento",
+                "Fecha de Nacimiento", "Sexo"
+            ]
         );
         // Tabla PSICOLOGO
         mostrar_tabla(
             "Psicólogos",
-            "SELECT ID_psicologo, Nombre_1, Nombre_2, Apellido_1, Apellido_2, Correo, Telefono FROM psicologo",
-            $conn
+            "SELECT Nombre_1, Nombre_2, Apellido_1, Apellido_2, Correo, Telefono FROM psicologo",
+            $conn,
+            [
+                "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido",
+                "Correo", "Teléfono"
+            ]
         );
         $conn->close();
         ?>
