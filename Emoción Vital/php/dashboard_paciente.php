@@ -56,7 +56,9 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Cuenta</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#" id="btnPerfilUsuario" data-bs-toggle="modal" data-bs-target="#perfilModal">Cuenta</a>
+                        </li>
                         <li><a class="dropdown-item" href="/php/cerrar_sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
@@ -156,15 +158,6 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
             </div>
         </div>
         <div class="col-xl-3 col-md-6" style="min-width:270px; flex:1 1 270px; max-width:350px;">
-            <div class="card bg-secondary text-white mb-4" style="border-radius:10px;">
-                <div class="card-body" style="font-size:20px;">AGENDAR EN CALENDAR</div>
-                <div class="card-footer d-flex align-items-center justify-content-between" style="background:rgba(0,0,0,0.07); border-radius:0 0 10px 10px;">
-                    <a class="small text-white stretched-link" href="/calendar.php" onclick="mostrarFormularioCita();return false;">Ir a calendar...</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6" style="min-width:270px; flex:1 1 270px; max-width:350px;">
             <div class="card bg-warning text-white mb-4" style="border-radius:10px;">
                 <div class="card-body" style="font-size:20px;">CITAS AGENDADAS</div>
                 <div class="card-footer d-flex align-items-center justify-content-between" style="background:rgba(0,0,0,0.07); border-radius:0 0 10px 10px;">
@@ -179,6 +172,31 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
                         
                      </div>
                 </main>
+                <!-- Modal Perfil de Usuario -->
+<div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="perfilModalLabel">Perfil de Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="perfilModalBody">
+        <!-- Aquí se cargará el perfil vía AJAX -->
+        <div class="text-center"><div class="spinner-border text-primary"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('btnPerfilUsuario').addEventListener('click', function(e) {
+    var modalBody = document.getElementById('perfilModalBody');
+    modalBody.innerHTML = '<div class="text-center"><div class="spinner-border text-primary"></div></div>';
+    fetch('/php/perfil_modal.php')
+        .then(response => response.text())
+        .then(html => { modalBody.innerHTML = html; });
+});
+</script>
                 <div id="layoutSidenav_footer">
                     <footer class="papa2">
                         <!-- Section: Social media -->
