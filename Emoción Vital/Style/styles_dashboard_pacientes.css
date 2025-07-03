@@ -179,12 +179,16 @@
 
 /* Tarjetas principales */
 .card.bg-primary {
-  background-color: var(--verde-oscuro) !important;
+  background-color: var(--amarillo) !important;
   color: var(--blanco) !important;
 }
 .card.bg-warning {
   background-color: var(--amarillo) !important;
-  color: var(--verde-oscuro) !important;
+  color: var(--blanco) !important;
+}
+.card.bg-secondary {
+  background-color: var(--verde-oscuro) !important;
+  color: var(--blanco) !important;
 }
 .card, .modal-content, .alert, .list-group-item {
   border-color: var(--verde-claro) !important;
@@ -195,7 +199,7 @@ a, .nav-link {
   color: var(--verde-oscuro) !important;
 }
 a:hover, .nav-link:hover {
-  color: var(--amarillo) !important;
+  color: var(--bs-black) !important;
 }
 *,
 *::before,

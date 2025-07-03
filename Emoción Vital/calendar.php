@@ -193,7 +193,7 @@ if(isset($_POST['agendar'])){
             <label>Fecha</label>
               <div class="form-group">
                   <div class="input-group date"  id="datetimepicker1" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" name="date_start"/>
+                      <input type="text" placeholder="MM/DD/YYYY" class="form-control datetimepicker-input" data-target="#datetimepicker1" name="date_start"/>
                       <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
@@ -207,7 +207,7 @@ if(isset($_POST['agendar'])){
   
 
  
-  <button type="submit" class="btn-btn-primary-btn-block" name="agendar">Submit</button>
+  <button type="submit" class="btn-btn-primary-btn-block" name="agendar">Agendar</button>
    <?php 
     }
     ?>
@@ -215,7 +215,7 @@ if(isset($_POST['agendar'])){
  <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker({
-                   format: 'YYYY-MM-DD HH:mm'
+                   format: 'MM-DD-YYYY HH:mm'
                 });
             });
 
