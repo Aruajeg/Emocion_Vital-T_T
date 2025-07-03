@@ -6,33 +6,35 @@
 }
 
 body {
-    background: linear-gradient(135deg, #295C45 0%, #9DC88D 100%);
+    background: #fff;
     min-height: 100vh;
 }
 
 .header-sistema {
-    background: linear-gradient(90deg, #295C45 0%, #4D774E 100%);
+    background: #164a41;
     color: #fff;
-    padding: 32px 0 18px 0;
+    padding: 24px 0 14px 0;
     box-shadow: 0 2px 12px 0 #0002;
-    border-radius: 0 0 18px 18px;
+    border-bottom: 4px solid #f1b24a;
     margin-bottom: 32px;
-    text-align: center;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 18px;
 }
 .header-sistema h1 {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
     font-weight: bold;
-    margin-bottom: 6px;
+    margin-bottom: 0;
     letter-spacing: 1px;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
 }
 .header-sistema .subtitulo {
     font-size: 1.1rem;
     color: #e6e6e6;
-    margin-bottom: 4px;
+    margin-bottom: 0;
 }
 .estado-sistema {
     margin-top: 8px;
@@ -74,9 +76,10 @@ body {
     padding: 24px 32px 18px 32px;
     max-width: 600px;
     width: 100%;
+    border: 1.5px solid #f1b24a;
 }
 .info-card h5 {
-    color: #295C45;
+    color: #164a41;
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 16px;
@@ -103,14 +106,28 @@ body {
 
 .form-register {
     width: 900px;
-    margin: auto;
-    margin-top: 60px;
+    margin: 40px auto 0 auto;
     font-family: 'calibri', Arial, sans-serif;
     color: #164A41;
-    box-shadow: none;
-    border: none;
-    padding: 0;
-    border-radius: 0;
+    background: #fff;
+    box-shadow: 0 4px 24px 0 #164a4122;
+    border-radius: 18px;
+    padding: 36px 40px 28px 40px;
+    border: 1.5px solid #f1b24a;
+}
+
+.form-register h4 {
+    font-size: 2rem;
+    margin-bottom: 28px;
+    color: #f1b24a;
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-shadow: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
 }
 
 .form-grid {
@@ -123,20 +140,12 @@ body {
 @media (max-width: 900px) {
     .form-register {
         width: 98vw;
+        padding: 18px 4vw 18px 4vw;
     }
     .form-grid {
         grid-template-columns: 1fr;
         gap: 18px 0;
     }
-}
-
-.form-register h4 {
-    font-size: 32px;
-    margin-bottom: 28px;
-    color: #F1B24A;
-    text-align: center;
-    letter-spacing: 1.5px;
-    text-shadow: 1px 2px 8px #164A4133;
 }
 
 .controls {
@@ -182,23 +191,23 @@ body {
 
 .form-register .botons {
     width: 100%;
-    background: linear-gradient(90deg, #F1B24A 0%, #4D774E 100%);
+    background: #f1b24a;
     border: none;
     padding: 18px;
-    color: #164A41;
+    color: #164a41;
     margin: 28px 0 0 0;
     font-size: 26px;
     border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 2px 8px 0 #F1B24A33;
+    box-shadow: 0 2px 8px 0 #f1b24a33;
     letter-spacing: 1px;
     transition: background 0.2s, color 0.2s, box-shadow 0.2s;
     grid-column: 1 / -1;
 }
 
 .form-register .botons:hover {
-    background: linear-gradient(90deg, #4D774E 0%, #F1B24A 100%);
-    color: #FFFFFF;
-    box-shadow: 0 4px 16px 0 #4D774E44;
+    background: #164a41;
+    color: #fff;
+    box-shadow: 0 4px 16px 0 #164a4144;
 }

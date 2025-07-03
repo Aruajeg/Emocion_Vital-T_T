@@ -70,7 +70,7 @@ function mantenerValor($campo, $datos_previos) {
   <main class="container">
     <section class="form-register">
       <form action="procesar_registro_paciente.php" method="POST" onsubmit="return validarFormulario()">
-        <h4>📋 Datos del Paciente</h4>
+        <h4>Datos del Paciente</h4>
         <div class="form-grid">
           <select class="controls" name="Tipo_Cedula" required>
             <option value="">Seleccione tipo de cédula *</option>
@@ -90,7 +90,7 @@ function mantenerValor($campo, $datos_previos) {
           <input class="controls" type="email" name="Correo" placeholder="Ingrese su correo electrónico *" required maxlength="100" value="<?php echo mantenerValor('Correo', $datos_previos); ?>">
         </div>
         <div class="botones-formulario">
-          <input class="botons" type="submit" value="💾 Registrar Paciente">
+          <input class="botons" type="submit" value="Registrar Paciente">
         </div>
       </form>
     </section>
