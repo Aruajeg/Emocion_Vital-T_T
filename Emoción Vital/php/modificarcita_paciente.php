@@ -17,15 +17,13 @@ $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 // Procesar modificación
 if(isset($_POST['modificar'])) {
     $tipo_cita = isset($_POST['tipo_cita']) ? $_POST['tipo_cita'] : '';
-    $fecha = isset($_POST['fecha_cita']) ? $_POST['fecha_cita'] : '';
-    $hora = isset($_POST['hora_cita']) ? $_POST['hora_cita'] : '';
+    $tipo_consulta = isset($_POST['tipo_consulta']) ? $_POST['tipo_consulta'] : '';
     $motivo = isset($_POST['descr_causa']) ? $_POST['descr_causa'] : '';
-    $status = isset($_POST['Status']) ? $_POST['Status'] : '';
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
 
-    if($id > 0 && $tipo_cita && $fecha && $hora && $motivo && $status) {
-        $stmt = $conn->prepare("UPDATE solicitar_cita SET tipo_cita=?, fecha_cita=?, hora_cita=?, descr_causa=?, Status=? WHERE ID_solicitud=?");
-        $stmt->bind_param("sssssi", $tipo_cita, $fecha, $hora, $motivo, $status, $id);
+    if($id > 0 && $tipo_cita && $motivo && $tipo_consulta) {
+        $stmt = $conn->prepare("UPDATE solicitar_cita SET tipo_cita=?, tipo_consulta=?, descr_causa=? WHERE ID_solicitud=?");
+        $stmt->bind_param("sssi", $tipo_cita, $tipo_consulta, $motivo, $id);
         $stmt->execute();
         $stmt->close();
         $conn->close();
@@ -56,7 +54,32 @@ if($id > 0 && !isset($_POST['modificar'])) {
     <meta charset="UTF-8">
     <title>Modificar Cita</title>
     <link rel="stylesheet" href="/Style/modificarcita.css">
-
+    <style>
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .badge-adulto {
+            background-color: #3498db;
+            color: white;
+        }
+        .badge-infante {
+            background-color: #2ecc71;
+            color: white;
+        }
+        .badge-adolescente {
+            background-color: #9b59b6;
+            color: white;
+        }
+        .badge-pareja {
+            background-color: #e67e22;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <h1>Modificar Cita Psicológica</h1>
@@ -64,34 +87,33 @@ if($id > 0 && !isset($_POST['modificar'])) {
         <?php if($cita): ?>
         <form method="post">
             <input type="hidden" name="id" value="<?= htmlspecialchars($cita['ID_solicitud']) ?>">
+            
             <label for="tipo_cita">Tipo de Cita:
                 <select id="tipo_cita" name="tipo_cita" required>
                     <option value="ONLINE" <?= (isset($cita['tipo_cita']) && $cita['tipo_cita']=='ONLINE')?'selected':'' ?>>ONLINE</option>
                     <option value="PRESENCIAL" <?= (isset($cita['tipo_cita']) && $cita['tipo_cita']=='PRESENCIAL')?'selected':'' ?>>PRESENCIAL</option>
                 </select>
             </label>
-            <label for="fecha_cita">Fecha:
-                <input type="date" id="fecha_cita" name="fecha_cita" value="<?= isset($cita['fecha_cita']) ? htmlspecialchars($cita['fecha_cita']) : '' ?>" required>
+            
+            <label for="tipo_consulta">Tipo de Consulta:
+                <select id="tipo_consulta" name="tipo_consulta" required>
+                    <option value="Adulto" <?= (isset($cita['tipo_consulta']) && $cita['tipo_consulta']=='Adulto')?'selected':'' ?>>Adulto</option>
+                    <option value="Adolescente" <?= (isset($cita['tipo_consulta']) && $cita['tipo_consulta']=='Adolescente')?'selected':'' ?>>Adolescente</option>
+                    <option value="Infante" <?= (isset($cita['tipo_consulta']) && $cita['tipo_consulta']=='Infante')?'selected':'' ?>>Infante</option>
+                    <option value="Pareja" <?= (isset($cita['tipo_consulta']) && $cita['tipo_consulta']=='Pareja')?'selected':'' ?>>Pareja</option>
+                </select>
             </label>
-            <label for="hora_cita">Hora:
-                <input type="time" id="hora_cita" name="hora_cita" value="<?= isset($cita['hora_cita']) ? htmlspecialchars($cita['hora_cita']) : '' ?>" required>
-            </label>
+            
             <label for="descr_causa">Motivo:
                 <textarea id="descr_causa" name="descr_causa" required><?= isset($cita['descr_causa']) ? htmlspecialchars($cita['descr_causa']) : '' ?></textarea>
             </label>
-            <label for="Status">Status:
-                <select id="Status" name="Status" required>
-                    <option value="ACTIVO" <?= (isset($cita['Status']) && strtoupper($cita['Status'])=='ACTIVO')?'selected':'' ?>>ACTIVO</option>
-                    <option value="INACTIVO" <?= (isset($cita['Status']) && strtoupper($cita['Status'])=='INACTIVO')?'selected':'' ?>>INACTIVO</option>
-                </select>
-            </label>
+            
             <button type="submit" name="modificar">Guardar Cambios</button>
             <div style="margin-top:20px;">
-            <a href="/php/consultarcitas_paciente.php" class="volver-inicio">
-            <i class="fas fa-arrow-left"></i>Cancelar
-            </a>
+                <a href="/php/consultarcitas_paciente.php" class="volver-inicio">
+                    <i class="fas fa-arrow-left"></i> Cancelar
+                </a>
             </div>
-            
         </form>
         <?php endif; ?>
     </div>

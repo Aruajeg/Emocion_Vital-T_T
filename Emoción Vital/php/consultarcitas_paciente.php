@@ -32,11 +32,11 @@ switch($orden) {
         break;
     case 'fecha_asc':
         $order_by = "sc.fecha_cita ASC, sc.hora_cita ASC";
-        $orden_descripcion = "Orden: Fecha (Más antigua primero)";
+        $orden_descripcion = "Orden: Fecha (La más proxima primero)";
         break;
     case 'fecha_desc':
         $order_by = "sc.fecha_cita DESC, sc.hora_cita DESC";
-        $orden_descripcion = "Orden: Fecha (Más próxima primero)";
+        $orden_descripcion = "Orden: Fecha (La más lejana primero)";
         break;
     default:
         $order_by = "sc.ID_solicitud ASC";
@@ -211,8 +211,8 @@ $result = $conn->query($sql);
                 <select name="orden" id="orden">
                     <option value="id_asc" <?= $orden == 'id_asc' ? 'selected' : '' ?>>ID (Más antiguo primero)</option>
                     <option value="id_desc" <?= $orden == 'id_desc' ? 'selected' : '' ?>>ID (Más nuevo primero)</option>
-                    <option value="fecha_asc" <?= $orden == 'fecha_asc' ? 'selected' : '' ?>>Fecha (Más antigua primero)</option>
-                    <option value="fecha_desc" <?= $orden == 'fecha_desc' ? 'selected' : '' ?>>Fecha (Más próxima primero)</option>
+                    <option value="fecha_asc" <?= $orden == 'fecha_asc' ? 'selected' : '' ?>>Fecha (La más próxima primero)</option>
+                    <option value="fecha_desc" <?= $orden == 'fecha_desc' ? 'selected' : '' ?>>Fecha (La más lejana primero)</option>
                 </select>
                 <button type="submit">Aplicar</button>
                 <span class="orden-actual"><?= $orden_descripcion ?></span>
