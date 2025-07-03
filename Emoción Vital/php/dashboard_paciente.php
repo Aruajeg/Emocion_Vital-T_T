@@ -158,6 +158,15 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
             </div>
         </div>
         <div class="col-xl-3 col-md-6" style="min-width:270px; flex:1 1 270px; max-width:350px;">
+            <div class="card bg-primary text-white mb-4" style="border-radius:10px;">
+                <div class="card-body" style="font-size:20px;">CALENDAR</div>
+                <div class="card-footer d-flex align-items-center justify-content-between" style="background:rgba(0,0,0,0.07); border-radius:0 0 10px 10px;">
+                    <a class="small text-white stretched-link" href="/calendar.php" onclick="mostrarFormularioCita();return false;">Ir a calendar...</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6" style="min-width:270px; flex:1 1 270px; max-width:350px;">
             <div class="card bg-warning text-white mb-4" style="border-radius:10px;">
                 <div class="card-body" style="font-size:20px;">CITAS AGENDADAS</div>
                 <div class="card-footer d-flex align-items-center justify-content-between" style="background:rgba(0,0,0,0.07); border-radius:0 0 10px 10px;">
