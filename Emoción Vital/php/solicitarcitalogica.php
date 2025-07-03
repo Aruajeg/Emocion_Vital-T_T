@@ -1,62 +1,64 @@
 <?php
+session_start();
+if(!isset($_SESSION['usuario'])) {
+    header("Location: ../index.php");
+    exit();
+}
+
+// Datos de conexión
 $host = "localhost";
 $user = "root";
 $pass = "";
 $db = "implantacion";
+
+// Conexión a la base de datos
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Validaciones básicas
-function validar_numero($numero) {
-    return preg_match("/^[0-9]+$/", $numero);
+// Recibir y sanitizar datos del formulario
+$id_paciente = $conn->real_escape_string($_POST['id_paciente']);
+$id_psicologo = $conn->real_escape_string($_POST['id_psicologo']);
+$tipo_cita = $conn->real_escape_string($_POST['tipo_cita']);
+$tipo_consulta = $conn->real_escape_string($_POST['tipo_consulta']);
+$fecha = $conn->real_escape_string($_POST['fecha']);
+$hora = $conn->real_escape_string($_POST['hora']);
+$motivo = $conn->real_escape_string($_POST['motivo']);
+
+// Validar que el tipo de consulta sea uno de los valores permitidos
+$tipos_permitidos = ['Adulto', 'Adolescente', 'Infante', 'Pareja'];
+if(!in_array($tipo_consulta, $tipos_permitidos)) {
+    header("Location: ../agendarcita.php?mensaje=Tipo de consulta no válido");
+    exit();
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_paciente = trim($_POST["id_paciente"]);
-    $id_psicologo = trim($_POST["id_psicologo"]);
-    $tipo_cita = trim($_POST["tipo_cita"]);
-    $fecha_cita = trim($_POST["fecha"]);
-    $hora_cita = trim($_POST["hora"]);
-    $descr_causa = trim($_POST["motivo"]);
+// Insertar en la base de datos
+$sql = "INSERT INTO solicitar_cita (
+    id_paciente, 
+    id_psicologo, 
+    tipo_cita, 
+    tipo_consulta, 
+    fecha_cita, 
+    hora_cita, 
+    descr_causa, 
+    Status
+) VALUES (
+    '$id_paciente', 
+    '$id_psicologo', 
+    '$tipo_cita', 
+    '$tipo_consulta', 
+    '$fecha', 
+    '$hora', 
+    '$motivo', 
+    'Activo'
+)";
 
-    // Validaciones
-    if (
-        !validar_numero($id_paciente) ||
-        !validar_numero($id_psicologo) ||
-        !in_array($tipo_cita, ['ONLINE', 'PRESENCIAL']) ||
-        !preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha_cita) ||
-        !preg_match('/^\d{2}:\d{2}$/', $hora_cita) ||
-        strlen($descr_causa) < 5 || strlen($descr_causa) > 255
-    ) {
-        $mensaje = urlencode("Datos inválidos. Verifique los campos e intente de nuevo.");
-        header("Location: solicitarcita.php?mensaje=$mensaje");
-        exit();
-    }
-
-    // Escapar para SQL
-    $id_paciente = $conn->real_escape_string($id_paciente);
-    $id_psicologo = $conn->real_escape_string($id_psicologo);
-    $tipo_cita = $conn->real_escape_string($tipo_cita);
-    $fecha_cita = $conn->real_escape_string($fecha_cita);
-    $hora_cita = $conn->real_escape_string($hora_cita);
-    $descr_causa = $conn->real_escape_string($descr_causa);
-
-    // Status por defecto: ACTIVO (pendiente)
-    $status = "ACTIVO";
-
-    $sql = "INSERT INTO solicitar_cita 
-        (id_paciente, id_psicologo, tipo_cita, fecha_cita, hora_cita, descr_causa, Status)
-        VALUES 
-        ('$id_paciente', '$id_psicologo', '$tipo_cita', '$fecha_cita', '$hora_cita', '$descr_causa', '$status')";
-    if ($conn->query($sql) === TRUE) {
-        header("Location: /php/dashboard.php?mensaje=" . urlencode("Cita agendada correctamente."));
-        exit();
-    } else {
-        $mensaje = urlencode("Error: " . $conn->error);
-        header("Location: /php/solicitarcita.php?mensaje=$mensaje");
-        exit();
-    }
+if ($conn->query($sql) === TRUE) {
+    header("Location: ../agendarcita.php?mensaje=Cita agendada exitosamente");
+} else {
+    header("Location: ../agendarcita.php?mensaje=Error al agendar cita: " . $conn->error);
 }
+
+$conn->close();
 ?>
