@@ -43,7 +43,7 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
             <button class="btn btn-link btn-lg order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
             <img src="/Imagen/Psico4.png" alt="Logo del consultorio" style="height:50px; vertical-align:middle; margin-left:20px;">
-            <a class="navbar-brand ps-3" href="#">EMOCIÓN VITAL</a>
+            <a class="navbar-brand ps-3" href="#">EMOCIÓOOOON VITAL</a>
             <!-- Navbar Search-->
             <!--<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -70,32 +70,32 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">PRINCIPAL</div>
-                            <a class="nav-link" href="dashboard.php">
+                            <a class="nav-link" href="/php/dashboard_paciente.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 <span>Inicio</span>
                             </a>
                             <div class="sb-sidenav-menu-heading">SISTEMA</div>
-                            <a class="nav-link" href="/php/solicitarcita.php">
+                            <a class="nav-link" href="/php/solicitarcita_paciente.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-calendar-plus"></i></div>
                                 <span>Solicitar Cita</span>
                             </a>
-                            <a class="nav-link" href="/php/registrarpaciente.php">
+                            <!--<<a class="nav-link" href="/php/registrarpaciente.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-plus"></i></div>
                                 <span>Registrar Paciente</span>
-                            </a>
-                            <a class="nav-link" href="/php/registrarpsicologo.php">
+                            </a>-->
+                            <!--<<a class="nav-link" href="/php/registrarpsicologo.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-md"></i></div>
                                 <span>Registrar Psicólogo</span>
-                            </a>
+                            </a>-->
                             <div class="sb-sidenav-menu-heading">GESTIÓN</div>
-                            <a class="nav-link" href="/php/consultarcitas.php">
+                            <a class="nav-link" href="/php/consultarcitas_paciente.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-calendar-check"></i></div>
-                                <span>Gestionar Citas</span>
+                                <span>Citas Agendadas</span>
                             </a>
-                            <a class="nav-link" href="/php/gestionregistros.php">
+                            <!--<<a class="nav-link" href="/php/gestionregistros.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>
                                 <span>Gestionar Registros</span>
-                            </a>
+                            </a>-->
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -112,49 +112,9 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
                             <li class="breadcrumb-item active">Pagina de inicio</li>
                         </ol>
                         <?php
-// Consultas para los datos del dashboard
-$total_pacientes = $conn->query("SELECT COUNT(*) FROM paciente")->fetch_row()[0];
-$total_citas_activas = $conn->query("SELECT COUNT(*) FROM solicitar_cita WHERE Status='ACTIVO'")->fetch_row()[0];
-$total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[0];
+
 ?>
 <style>
-.dashboard-stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: flex-start;
-    align-items: stretch;
-    margin: 40px 0 0 0;
-}
-
-.dashboard-stats .stat-box {
-    background: #fff;
-    min-width: 220px;
-    flex: 1 1 220px;
-    max-width: 320px;
-    color: #222;
-    padding: 28px 24px 24px 24px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.dashboard-stats .stat-box .stat-value {
-    font-size: 38px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #4e73df;
-    word-break: break-all;
-}
-
-.dashboard-stats .stat-box .stat-label {
-    font-size: 18px;
-    color: #555;
-    text-align: justify;
-}
 
 .dashboard-center-container {
     display: flex;
@@ -185,27 +145,13 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
 }
 </style>
 <div class="dashboard-center-container">
-    <div class="dashboard-stats" style="margin-bottom:40px;">
-        <div class="stat-box">
-            <div class="stat-value"><?= $total_pacientes ?></div>
-            <div class="stat-label">Pacientes Registrados</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-value"><?= $total_citas ?></div>
-            <div class="stat-label">Solicitudes de Citas</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-value"><?= $total_citas_activas ?></div>
-            <div class="stat-label">Citas Activas</div>
-        </div>
-    </div>
 
     <div class="row" style="margin-left:0; margin-right:0; gap:30px; margin-bottom:40px; display:flex; flex-wrap:wrap;">
         <div class="col-xl-3 col-md-6" style="min-width:270px; flex:1 1 270px; max-width:350px;">
             <div class="card bg-primary text-white mb-4" style="border-radius:10px;">
                 <div class="card-body" style="font-size:20px;">SOLICITAR CITA</div>
                 <div class="card-footer d-flex align-items-center justify-content-between" style="background:rgba(0,0,0,0.07); border-radius:0 0 10px 10px;">
-                    <a class="small text-white stretched-link" href="#" onclick="mostrarFormularioCita();return false;">Ir a solicitar citas...</a>
+                    <a class="small text-white stretched-link" href="/php/solicitarcita_paciente.php" onclick="mostrarFormularioCita();return false;">Ir a solicitar cita...</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
@@ -214,7 +160,7 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
             <div class="card bg-warning text-white mb-4" style="border-radius:10px;">
                 <div class="card-body" style="font-size:20px;">CITAS AGENDADAS</div>
                 <div class="card-footer d-flex align-items-center justify-content-between" style="background:rgba(0,0,0,0.07); border-radius:0 0 10px 10px;">
-                    <a class="small text-white stretched-link" href="gestioncita.php">Ir a citas agendadas...</a>
+                    <a class="small text-white stretched-link" href="/php/consultarcitas_paciente.php">Ir a citas agendadas...</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
@@ -262,7 +208,7 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
 
                         <!-- Section: Links  -->
                         <section class="">
-                            <div class="row text-center">
+                            <div class="row text-left">
                                 <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
                                     <h5 class="text-uppercase">Enlaces útiles</h5>
 

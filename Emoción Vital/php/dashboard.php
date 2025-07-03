@@ -205,16 +205,16 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
             <div class="card bg-primary text-white mb-4" style="border-radius:10px;">
                 <div class="card-body" style="font-size:20px;">SOLICITAR CITA</div>
                 <div class="card-footer d-flex align-items-center justify-content-between" style="background:rgba(0,0,0,0.07); border-radius:0 0 10px 10px;">
-                    <a class="small text-white stretched-link" href="#" onclick="mostrarFormularioCita();return false;">Ir a solicitar citas...</a>
+                    <a class="small text-white stretched-link" href="/php/solicitarcita.php" onclick="mostrarFormularioCita();return false;">Ir a solicitar cita...</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6" style="min-width:270px; flex:1 1 270px; max-width:350px;">
             <div class="card bg-warning text-white mb-4" style="border-radius:10px;">
-                <div class="card-body" style="font-size:20px;">CITAS AGENDADAS</div>
+                <div class="card-body" style="font-size:20px;">GESTIONAR CITAS</div>
                 <div class="card-footer d-flex align-items-center justify-content-between" style="background:rgba(0,0,0,0.07); border-radius:0 0 10px 10px;">
-                    <a class="small text-white stretched-link" href="gestioncita.php">Ir a citas agendadas...</a>
+                    <a class="small text-white stretched-link" href="/php/consultarcitas.php">Ir a gestionar citas...</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
@@ -262,7 +262,7 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
 
                         <!-- Section: Links  -->
                         <section class="">
-                            <div class="row text-center">
+                            <div class="row text-left">
                                 <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
                                     <h5 class="text-uppercase">Enlaces útiles</h5>
 
