@@ -44,6 +44,11 @@
                 <input type="text" placeholder="Respuesta" name="RP1" required>
                 <input type="password" placeholder="Contraseña" name="contrasena" require>
                 <input type="password" placeholder="Repite la contraseña" name="verificar_contrasena" require>
+            <!--<select type= "hidden" name="ID_cargo" id="ID_cargo">
+                    <option value="1">Administador</option>
+                    <option value="2">Paciente</option>
+                </select> -->
+                <input type="hidden" placeholder="TdU" name="ID_cargo" value="2">
                 <button type="submit">Crear</button>
             </form>
         </div>
