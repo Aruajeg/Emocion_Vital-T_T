@@ -6,11 +6,99 @@
 }
 
 body {
-    background: linear-gradient(135deg, #9DC88D 0%, #F1B24A 100%);
-    background-image: url('Imagen de WhatsApp 2025-06-26 a las 10.08.53_592f2525.jpg');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(135deg, #295C45 0%, #9DC88D 100%);
     min-height: 100vh;
+}
+
+.header-sistema {
+    background: linear-gradient(90deg, #295C45 0%, #4D774E 100%);
+    color: #fff;
+    padding: 32px 0 18px 0;
+    box-shadow: 0 2px 12px 0 #0002;
+    border-radius: 0 0 18px 18px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+.header-sistema h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.header-sistema .subtitulo {
+    font-size: 1.1rem;
+    color: #e6e6e6;
+    margin-bottom: 4px;
+}
+.estado-sistema {
+    margin-top: 8px;
+}
+.estado-label {
+    font-weight: bold;
+    color: #fff;
+}
+.estado-valor.conectado {
+    background: #51cf66;
+    color: #fff;
+    border-radius: 8px;
+    padding: 2px 12px;
+    margin-left: 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    display: inline-block;
+}
+.estado-valor.desconectado {
+    background: #ff6b6b;
+    color: #fff;
+    border-radius: 8px;
+    padding: 2px 12px;
+    margin-left: 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.info-adicional {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+}
+.info-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px 0 #164A4122;
+    padding: 24px 32px 18px 32px;
+    max-width: 600px;
+    width: 100%;
+}
+.info-card h5 {
+    color: #295C45;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.info-card ul {
+    color: #666;
+    font-size: 1.05rem;
+    margin-left: 18px;
+}
+.info-card li {
+    margin-bottom: 8px;
+    list-style: disc;
+}
+.footer-sistema {
+    margin-top: 32px;
+    text-align: center;
+    color: #888;
+    font-size: 1rem;
+    padding-bottom: 18px;
 }
 
 .form-register {

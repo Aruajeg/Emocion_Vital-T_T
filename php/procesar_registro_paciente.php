@@ -33,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefono = $conexion->real_escape_string(trim($_POST['Teléfono'] ?? ''));
     $fecha_nacimiento = $conexion->real_escape_string(trim($_POST['Fecha_Nacimiento'] ?? ''));
     $correo = $conexion->real_escape_string(trim($_POST['Correo'] ?? ''));
-    $id_direccion = $conexion->real_escape_string(trim($_POST['ID_Direccion'] ?? ''));
-    $status_paciente = $conexion->real_escape_string(trim($_POST['StatusPaciente'] ?? ''));
+    $id_direccion = $conexion->real_escape_string(trim($_POST['ID_Direccion'] ?? '1'));
+    $status_paciente = $conexion->real_escape_string(trim($_POST['StatusPaciente'] ?? 'Activo'));
 
     // Validaciones completas
     $errores = [];
@@ -157,24 +157,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($errores)) {
         // Preparar la consulta SQL usando prepared statements para mayor seguridad
         $sql = "INSERT INTO paciente (
-            Tipo_Cedula, Cedula, `Primer Nombre`, `Segundo Nombre`, `Primer Apellido`, `Segundo Apellido`,
-            Num_Hijos, Teléfono, Fecha_Nacimiento, Correo, ID_Direccion, StatusPaciente
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            ID_direccion, Nombre_1, Nombre_2, Apellido_1, Apellido_2,
+            Status, Correo, Telefono, N_documento, Tipo_documento,
+            Fecha_nacimiento
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conexion->prepare($sql);
         if ($stmt) {
-            $stmt->bind_param("ssssssssssis",
-                $tipo_cedula,
-                $cedula,
+            $stmt->bind_param("issssssssss",
+                $id_direccion,
                 $primer_nombre,
                 $segundo_nombre,
                 $primer_apellido,
                 $segundo_apellido,
-                $num_hijos,
-                $telefono,
-                $fecha_nacimiento,
+                $status_paciente,
                 $correo,
-                $id_direccion,
-                $status_paciente
+                $telefono,
+                $cedula,
+                $tipo_cedula,
+                $fecha_nacimiento
             );
             if ($stmt->execute()) {
                 $mensaje = "¡Registro exitoso! Los datos del paciente han sido guardados correctamente.";
@@ -279,6 +279,6 @@ $conexion->close();
         <p><?php echo htmlspecialchars($mensaje); ?></p>
     </div>
     
-    <a href="registro_pacientes.php" class="boton">Volver al formulario</a>
+    <a href="dashboard_paciente.php" class="boton">Volver al inicio</a>
 </body>
 </html>
