@@ -82,11 +82,12 @@ if(isset($_POST['agendar'])){
         }
 
 
-    }catch(Google_Service_Exception $gs){
+    }
+    catch(Google_Service_Exception $gs){
      
       $m = json_decode($gs->getMessage());
       $m= $m->error->message;
-
+      
     }catch(Exception $e){
         $m = $e->getMessage();
       
