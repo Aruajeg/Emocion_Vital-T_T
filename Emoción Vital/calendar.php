@@ -102,7 +102,7 @@ if(isset($_POST['agendar'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CALENDAR</title>
+    <title>Contact Form</title>
      <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -113,7 +113,7 @@ if(isset($_POST['agendar'])){
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
       <style type="text/css">
           body{
-            background-image: url(./Imagen/Fondo.png);
+            background-image: url('../Imagen/Fondo.png');
             background-size: cover;
           }
 
@@ -126,22 +126,23 @@ if(isset($_POST['agendar'])){
                 width: 30%;
                 padding: 15px;
             }
-          .btn-btn-primary-btn-block{
-            background-color: #f1b24a;
-            color: #ffffff;
-            font-size: 12px;
-            padding: 10px 45px;
-            border: 1px solid transparent;
-            border-radius: 8px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-top: 10px;
-            cursor: pointer;
-            width: 100%;
+          .btn-btn-primary-btn-block  {
+                background-color: #f1b24a;
+                color: #ffffff;
+                font-size: 12px;
+                padding: 10px 45px;
+                border: 1px solid transparent;
+                border-radius: 8px;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                margin-top: 10px;
+                cursor: pointer;
+                width: 100%;
           }
-          .input-group input{
+          .form-control{
             background-color: #d3fac5;
+            border: none;
           }
           @media screen AND (max-width: 480px){
             form{
@@ -169,7 +170,7 @@ if(isset($_POST['agendar'])){
         <?php
       }
       ?><br>
-      <button type="button" class="btn btn-primary btn-block" onclick="reload();">BACK</button>
+      <button type="button" class="btn-btn-primary-btn-block" onclick="reload();">Atras</button>
       <?php
     }
     else{
@@ -180,8 +181,8 @@ if(isset($_POST['agendar'])){
         <div class="col-sm-12">
             <label>Nombre y Apellido</label>
               <div class="form-group">
-                  <div class="input-group ">
-                      <input type="text" class="form-control "  name="username" placeholder="Insertar" autocomplete="off" />
+                  <div class="input-group">
+                      <input type="text" class="form-control"  name="username" placeholder="Ingresa" autocomplete="off" />
                     
                   </div>
               </div>
@@ -193,7 +194,7 @@ if(isset($_POST['agendar'])){
             <label>Fecha</label>
               <div class="form-group">
                   <div class="input-group date"  id="datetimepicker1" data-target-input="nearest">
-                      <input type="text" placeholder="MM/DD/YYYY" class="form-control datetimepicker-input" data-target="#datetimepicker1" name="date_start"/>
+                      <input type="text" placeholder="YYYY-MM-DD" class="form-control datetimepicker-input" data-target="#datetimepicker1" name="date_start"/>
                       <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
@@ -207,7 +208,7 @@ if(isset($_POST['agendar'])){
   
 
  
-  <button type="submit" class="btn-btn-primary-btn-block" name="agendar">Agendar</button>
+  <button type="submit" class="btn-btn-primary-btn-block" name="agendar">Submit</button>
    <?php 
     }
     ?>
@@ -215,7 +216,7 @@ if(isset($_POST['agendar'])){
  <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker({
-                   format: 'MM-DD-YYYY HH:mm'
+                   format: 'YYYY-MM-DD HH:mm'
                 });
             });
 
