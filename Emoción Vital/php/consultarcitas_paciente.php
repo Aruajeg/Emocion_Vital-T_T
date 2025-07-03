@@ -43,7 +43,7 @@ switch($orden) {
         $orden_descripcion = "Orden: ID (Más antiguo primero)";
 }
 
-// Consulta SQL con ordenamiento dinámico
+// Consulta SQL con ordenamiento dinámico (incluyendo Tipo_consulta)
 $sql = "
 SELECT 
     sc.ID_solicitud,
@@ -52,6 +52,7 @@ SELECT
     ps.Nombre_1 AS Psicologo_Nombre,
     ps.Apellido_1 AS Psicologo_Apellido,
     sc.tipo_cita,
+    sc.tipo_consulta,
     sc.fecha_cita,
     sc.hora_cita,
     sc.descr_causa,
@@ -79,7 +80,7 @@ $result = $conn->query($sql);
             margin-top: 20px;
         }
         .table-citas th, .table-citas td {
-            padding: 12px 15px;
+            padding: 10px 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
@@ -112,7 +113,7 @@ $result = $conn->query($sql);
             background: #2e59d9;
         }
         .table-section {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 30px auto;
             padding: 20px;
             background: white;
@@ -173,6 +174,30 @@ $result = $conn->query($sql);
             color: #666;
             margin-left: 15px;
         }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .badge-adulto {
+            background-color: #3498db;
+            color: white;
+        }
+        .badge-infante {
+            background-color: #2ecc71;
+            color: white;
+        }
+        .badge-adolescente {
+            background-color: #9b59b6;
+            color: white;
+        }
+        .badge-pareja {
+            background-color: #e67e22;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -202,7 +227,8 @@ $result = $conn->query($sql);
                             <th>#</th>
                             <th>Paciente</th>
                             <th>Psicólogo</th>
-                            <th>Tipo de Cita</th>
+                            <th>Tipo Cita</th>
+                            <th>Tipo Consulta</th>
                             <th>Fecha</th>
                             <th>Hora</th>
                             <th>Motivo</th>
@@ -214,12 +240,26 @@ $result = $conn->query($sql);
                         <?php 
                         $indice = 1;
                         while($row = $result->fetch_assoc()): 
+                            // Determinar la clase CSS según el tipo de consulta
+                            $badge_class = '';
+                            switch($row['tipo_consulta']) {
+                                case 'Adulto': $badge_class = 'badge-adulto'; break;
+                                case 'Infante': $badge_class = 'badge-infante'; break;
+                                case 'Adolescente': $badge_class = 'badge-adolescente'; break;
+                                case 'Pareja': $badge_class = 'badge-pareja'; break;
+                                default: $badge_class = '';
+                            }
                         ?>
                             <tr>
                                 <td><?= $indice ?></td>
                                 <td><?= htmlspecialchars($row['Paciente_Nombre'] . ' ' . $row['Paciente_Apellido']) ?></td>
                                 <td><?= htmlspecialchars($row['Psicologo_Nombre'] . ' ' . $row['Psicologo_Apellido']) ?></td>
                                 <td><?= htmlspecialchars($row['tipo_cita']) ?></td>
+                                <td>
+                                    <span class="badge <?= $badge_class ?>">
+                                        <?= htmlspecialchars($row['tipo_consulta']) ?>
+                                    </span>
+                                </td>
                                 <td><?= htmlspecialchars($row['fecha_cita']) ?></td>
                                 <td><?= htmlspecialchars($row['hora_cita']) ?></td>
                                 <td><?= htmlspecialchars($row['descr_causa']) ?></td>

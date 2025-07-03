@@ -29,7 +29,7 @@ $motivo = $conn->real_escape_string($_POST['motivo']);
 // Validar que el tipo de consulta sea uno de los valores permitidos
 $tipos_permitidos = ['Adulto', 'Adolescente', 'Infante', 'Pareja'];
 if(!in_array($tipo_consulta, $tipos_permitidos)) {
-    header("Location: ../agendarcita.php?mensaje=Tipo de consulta no válido");
+    header("Location: ../php/solicitarcita.php?mensaje=Tipo de consulta no válido");
     exit();
 }
 
@@ -55,9 +55,9 @@ $sql = "INSERT INTO solicitar_cita (
 )";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location: ../agendarcita.php?mensaje=Cita agendada exitosamente");
+    header("Location: ../php/dashboard.php?mensaje=Cita agendada exitosamente");
 } else {
-    header("Location: ../agendarcita.php?mensaje=Error al agendar cita: " . $conn->error);
+    header("Location: ../php/solicitarcita.php?mensaje=Error al agendar cita: " . $conn->error);
 }
 
 $conn->close();

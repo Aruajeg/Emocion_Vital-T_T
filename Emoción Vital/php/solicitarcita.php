@@ -63,7 +63,7 @@
         }
         .page-title {
             text-align: center;
-            color:rgb(22, 74, 65);
+            color:rgb(202, 223, 219);
             margin-bottom: 30px;
             font-size: 28px;
             font-weight: bold;
@@ -75,8 +75,7 @@
 <body>
 
     <div class="container">
-        <h1 class="page-title">Solicitar Cita</h1>
-        <h2>Agendar Cita Psicológica</h2>
+        <h2 class="page-title">Solicitar Cita</h2>
         <?php
         if (isset($_GET['mensaje']) && $_GET['mensaje'] !== '') {
             echo '<div class="alert">' . htmlspecialchars($_GET['mensaje']) . '</div>';
@@ -106,7 +105,7 @@
             $psicologos[] = $row;
         }
         ?>
-        <form method="post" action="/php/solicitarcitalogica.php">
+        <form method="post" action="/php/solicitarcitalogica_paciente.php">
             <div>
                 <label for="id_paciente">Paciente:</label>
                 <select id="id_paciente" name="id_paciente" required class="form-control">
