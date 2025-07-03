@@ -185,7 +185,7 @@ $total_citas = $conn->query("SELECT COUNT(*) FROM solicitar_cita")->fetch_row()[
 <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
+      <div class="modal-header" style="background:#164a41; color:#fff; border-bottom:4px solid #f1b24a;">
         <h5 class="modal-title" id="perfilModalLabel">Perfil de Usuario</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>

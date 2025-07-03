@@ -11,14 +11,12 @@
     $filas=mysqli_fetch_array($resultado);
 
     if($filas['ID_cargo']==1){ //Administrador
-        $_SESSION['usuario'] = $Correo;
-        $_SESSION['id_usuario'] = $filas['ID_usuario'];
+        $_SESSION['usuario'] = $Correo;    
         header("location: /php/dashboard.php");
         exit;
     }else
     if($filas['ID_cargo']==2){ //Paciente
         $_SESSION['usuario'] = $Correo;
-        $_SESSION['id_usuario'] = $filas['ID_usuario'];
         header("location: /php/dashboard_paciente.php");
         exit;
     }
