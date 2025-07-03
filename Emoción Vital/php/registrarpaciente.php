@@ -37,7 +37,7 @@
 </head>
 <body>
     <div class="container" style="max-width:600px;margin:40px auto;">
-
+        <h1 class="page-title">Registrar Paciente</h1>
         <h2>Registrar Paciente</h2>
         <?php
         // Mostrar mensaje si viene por GET, pero no es obligatorio para mostrar el formulario
