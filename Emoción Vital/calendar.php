@@ -6,7 +6,7 @@ if(isset($_POST['agendar'])){
     
 
     date_default_timezone_set('America/Caracas');
-    include_once '/calendar/vendor/autoload.php';
+    include_once './vendor/autoload.php';
 
     //configurar variable de entorno / set enviroment variable
     putenv('GOOGLE_APPLICATION_CREDENTIALS=credenciales.json');
@@ -16,7 +16,7 @@ if(isset($_POST['agendar'])){
     $client->setScopes(['https://www.googleapis.com/auth/calendar']);
 
     //define id calendario
-    $id_calendar='f827a92db7d11d14789974387e7fe13ac19259cc91a878ce7e1d5a1b52fae940@group.calendar.google.com';
+    $id_calendar='f827a92db7d11d14789974387e7fe13ac19259cc91a878ce7e1d5a1b52fae940@group.calendar.google.com';//
     
    
       
@@ -82,12 +82,11 @@ if(isset($_POST['agendar'])){
         }
 
 
-    }
-    catch(Google_Service_Exception $gs){
+    }catch(Google_Service_Exception $gs){
      
       $m = json_decode($gs->getMessage());
       $m= $m->error->message;
-      
+
     }catch(Exception $e){
         $m = $e->getMessage();
       
@@ -114,34 +113,41 @@ if(isset($_POST['agendar'])){
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
       <style type="text/css">
           body{
-            background-image: url('../Imagen/Fondo.png');
+            background-image: url(./Imagen/Fondo.png);
             background-size: cover;
           }
 
           
           form{
                 background-color: #fff;
+                border-radius: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
                 margin: 10% 35%;
                 width: 30%;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-                border-radius: 20px;
                 padding: 15px;
             }
-            .form-group input{
-              background-color: #d3fac5;
-            }
-            .btn-btn-primary-btn-block{
+          .btn-btn-primary-btn-block{
             background-color: #f1b24a;
             color: #ffffff;
-            margin: 0px 3%;
-            width: 94%;
-            }
+            font-size: 12px;
+            padding: 10px 45px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            cursor: pointer;
+            width: 100%;
+          }
+          .input-group input{
+            background-color: #d3fac5;
+          }
           @media screen AND (max-width: 480px){
             form{
                 margin: 0px 3%;
                 width: 94%;
-
-                }
+            }
           }
       </style>
 </head>
@@ -163,7 +169,7 @@ if(isset($_POST['agendar'])){
         <?php
       }
       ?><br>
-      <button type="button" class="btn btn-primary btn-block" onclick="reload();">ATRAS</button>
+      <button type="button" class="btn btn-primary btn-block" onclick="reload();">BACK</button>
       <?php
     }
     else{
@@ -172,10 +178,10 @@ if(isset($_POST['agendar'])){
 
       <div class="row">
         <div class="col-sm-12">
-            <label>Nombre</label>
+            <label>Nombre y Apellido</label>
               <div class="form-group">
                   <div class="input-group ">
-                      <input type="text" class="form-control "  name="username" placeholder="Utiliza tu nómbre y apellido" autocomplete="off" />
+                      <input type="text" class="form-control "  name="username" placeholder="Insertar" autocomplete="off" />
                     
                   </div>
               </div>
@@ -201,7 +207,7 @@ if(isset($_POST['agendar'])){
   
 
  
-  <button type="submit" class="btn-btn-primary-btn-block" name="agendar">GENERAR CITA</button>
+  <button type="submit" class="btn-btn-primary-btn-block" name="agendar">Submit</button>
    <?php 
     }
     ?>
