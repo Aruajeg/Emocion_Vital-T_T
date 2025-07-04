@@ -13,6 +13,8 @@
 ## 🌟 Definición del Sistema  
 Solución tecnológica que centraliza la gestión de consultas psicológicas (presenciales/virtuales), optimizando el acceso a terapias personalizadas para garantizar un seguimiento emocional continuo y accesible.
 
+VIDEO del Sistema: https://drive.google.com/file/d/1vWPq0B7puKwewc8CZF70USb37M7KjJ4j/view?usp=sharing
+
 # 🚀 Funcionalidad
 
 ## 1. 🏡 Página de Bienvenida
