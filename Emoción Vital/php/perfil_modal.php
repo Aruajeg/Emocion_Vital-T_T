@@ -87,4 +87,9 @@ $datos_usuario = [
             <li class="list-group-item"><strong><?= htmlspecialchars($campo) ?>:</strong> <?= htmlspecialchars($valor) ?></li>
         <?php endforeach; ?>
     </ul>
+    <div style="text-align:center; margin-top:18px;">
+        <a href="/php/registro_pacientes.php" class="btn btn-warning" style="color:#fff; font-weight:bold; background:#f1b24a; border:none; border-radius:6px; padding:10px 24px; text-decoration:none;">
+            <i class="fas fa-edit"></i> Editar datos de usuario
+        </a>
+    </div>
 </div>

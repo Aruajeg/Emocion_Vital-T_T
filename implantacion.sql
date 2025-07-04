@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-07-2025 a las 10:31:26
+-- Tiempo de generación: 02-07-2025 a las 23:52:01
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.4.8
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1345,12 +1345,17 @@ CREATE TABLE `paciente` (
   `Nombre_2` varchar(250) NOT NULL,
   `Apellido_1` varchar(250) NOT NULL,
   `Apellido_2` varchar(250) NOT NULL,
+  `Contrasena` varchar(34) NOT NULL,
   `Status` enum('Activo','Inactivo') NOT NULL,
   `Correo` varchar(250) NOT NULL,
   `Telefono` varchar(11) NOT NULL,
   `N_documento` varchar(8) NOT NULL,
   `Tipo_documento` enum('V','E','P','J') NOT NULL,
   `Fecha_nacimiento` date NOT NULL,
+  `P1` enum('¿Cuál es su color favorito?','¿Cómo se llama tu madre?','¿Cómo se llama tu padre?','¿Color favorita?') NOT NULL,
+  `RP1` varchar(250) NOT NULL,
+  `P2` enum('¿Lugar de nacimiento?','¿Cómo se llama tu mascota?','¿Carro favorito?','¿Comida favorita?') NOT NULL,
+  `RP2` varchar(250) NOT NULL,
   `Desc_paciente` varchar(250) NOT NULL,
   `Tipo_paciente` enum('Adulto','Adolescente','Pareja','Infante') NOT NULL,
   `Sexo` enum('Hombre','Mujer','Otro') NOT NULL
@@ -1360,20 +1365,9 @@ CREATE TABLE `paciente` (
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`ID_paciente`, `ID_usuario`, `ID_direccion`, `Nombre_1`, `Nombre_2`, `Apellido_1`, `Apellido_2`, `Status`, `Correo`, `Telefono`, `N_documento`, `Tipo_documento`, `Fecha_nacimiento`, `Desc_paciente`, `Tipo_paciente`, `Sexo`) VALUES
-(1, 0, 0, 'Angelo', 'Gabriel', 'Lelli', 'Valera', 'Activo', 'angelo@gmail.com', '04125366488', '30485614', 'V', '0000-00-00', 'Decadencia educativa', 'Adulto', 'Hombre'),
-(2, 0, 0, 'Alberth', 'Jesus', 'Espinoza', 'Gonzalez', 'Activo', 'Alberth@gmail.com', '04245093706', '28019622', 'V', '2000-11-28', 'Estres Post-traumatico', 'Adulto', ''),
-(3, 0, 0, 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'Activo', 'angelo@gmail.com', '04125366488', '30485666', 'E', '2025-07-11', 'dddddddddddd', 'Adulto', ''),
-(4, 0, 0, 'dsss', 'dsdsd', 'sadasd', 'asdasd', 'Activo', 'prueba@gmail.com', '04125366488', '3045341', 'J', '2025-07-09', 'dsdsad', 'Adulto', 'Mujer'),
-(5, 0, 0, 'dsdasd', 'dasdas', 'dsadas', 'asdasd', 'Activo', 'asdasd@gmai.com', '31231323', '41341231', 'P', '2025-07-11', 'dsadsda', 'Adulto', 'Hombre'),
-(6, 0, 0, 'dsadas', 'asdasd', 'asdasd', 'asdasd', 'Activo', 'asdasd@gmail.com', '3123132323', '30485554', 'V', '2025-07-24', 'sadasdas', 'Adulto', 'Hombre'),
-(7, 0, 0, 'dsadas', 'asdasd', 'asdasd', 'asdasd', 'Activo', 'asdasd@gmail.com', '3123132323', '30485554', 'V', '2025-07-24', 'sadasdas', 'Adulto', 'Hombre'),
-(8, 0, 0, 'dsadas', 'asdasd', 'asdasd', 'asdasd', 'Activo', 'asdasd@gmail.com', '3123132323', '30485554', 'V', '2025-07-24', 'sadasdas', 'Adulto', 'Hombre'),
-(9, 0, 0, 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'Activo', 'angelo@gmail.com', '04125366488', '30485614', 'V', '2025-07-04', 'asdasd', 'Adulto', 'Hombre'),
-(10, 2, 0, 'asdsa', 'asdasd', 'asdasd', 'asdasda', 'Activo', 'angelo@gmail.com', '04125366488', '3046545', 'V', '2025-07-10', 'asdasd', 'Adulto', 'Hombre'),
-(11, 2, 0, 'sad', 'sdasd', 'asdasd', 'asdasd', 'Activo', 'angelo@gmail.com', '2312312313', '3048332', 'V', '2025-07-25', 'asdasd', 'Adulto', 'Mujer'),
-(12, 2, 0, 'ddd', 'sdsd', 'dsds', 'sdsd', 'Activo', 'pedro@gmail.com', '04125366488', '30485432', 'V', '2025-07-11', 'asda', 'Adulto', 'Mujer'),
-(13, 1, 0, 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'Activo', 'angelo@gmail.com', '04125366488', '30485453', 'V', '2025-07-17', 'dasdasd', 'Adulto', 'Mujer');
+INSERT INTO `paciente` (`ID_paciente`, `ID_usuario`, `ID_direccion`, `Nombre_1`, `Nombre_2`, `Apellido_1`, `Apellido_2`, `Contrasena`, `Status`, `Correo`, `Telefono`, `N_documento`, `Tipo_documento`, `Fecha_nacimiento`, `P1`, `RP1`, `P2`, `RP2`, `Desc_paciente`, `Tipo_paciente`, `Sexo`) VALUES
+(1, 0, 0, 'Angelo', 'Gabriel', 'Lelli', 'Valera', '3051', 'Activo', 'angelo@gmail.com', '04125366488', '30485614', 'V', '0000-00-00', '¿Cuál es su color favorito?', 'Rojo', '¿Lugar de nacimiento?', 'Barquisimeto', 'Decadencia educativa', 'Adulto', 'Hombre'),
+(2, 0, 0, 'Alberth', 'Jesus', 'Espinoza', 'Gonzalez', '', 'Activo', 'Alberth@gmail.com', '04245093706', '28019622', 'V', '2000-11-28', '', '', '', '', 'Estres Post-traumatico', 'Adulto', '');
 
 -- --------------------------------------------------------
 
@@ -2583,20 +2577,24 @@ CREATE TABLE `psicologo` (
   `Nombre_2` varchar(250) NOT NULL,
   `Apellido_1` varchar(250) NOT NULL,
   `Apellido_2` varchar(250) NOT NULL,
+  `Contrasena` varchar(34) NOT NULL,
   `Status` enum('Activo','Inactivo') NOT NULL,
   `Correo` varchar(250) NOT NULL,
   `Telefono` varchar(11) NOT NULL,
   `N_documento` varchar(8) NOT NULL,
-  `Tipo_documento` enum('V','E','P','J') NOT NULL
+  `Tipo_documento` enum('V','E','P','J') NOT NULL,
+  `P1` enum('¿Cuál es su color favorito?','¿Cómo se llama tu madre?','¿Cómo se llama tu padre?','¿Color favorita?') NOT NULL,
+  `RP1` varchar(250) NOT NULL,
+  `P2` enum('¿Lugar de nacimiento?','¿Cómo se llama tu mascota?','¿Carro favorito?','¿Comida favorita?') NOT NULL,
+  `RP2` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `psicologo`
 --
 
-INSERT INTO `psicologo` (`ID_psicologo`, `ID_usuario`, `ID_direccion`, `Nombre_1`, `Nombre_2`, `Apellido_1`, `Apellido_2`, `Status`, `Correo`, `Telefono`, `N_documento`, `Tipo_documento`) VALUES
-(1, 0, 0, 'Ismenia', 'Super', 'Suarez', 'Man', 'Activo', 'ismeani@gmail.com', '04123213321', '30485614', 'V'),
-(2, 0, 0, 'asdasd', 'dsadasd', 'asdasd', 'asdasd', 'Activo', 'asd@gmail.com', '31233323', '30485553', 'E');
+INSERT INTO `psicologo` (`ID_psicologo`, `ID_usuario`, `ID_direccion`, `Nombre_1`, `Nombre_2`, `Apellido_1`, `Apellido_2`, `Contrasena`, `Status`, `Correo`, `Telefono`, `N_documento`, `Tipo_documento`, `P1`, `RP1`, `P2`, `RP2`) VALUES
+(1, 0, 0, 'Ismenia', 'Super', 'Suarez', 'Man', '', 'Activo', 'ismeani@gmail.com', '04123213321', '30485614', 'V', '¿Cuál es su color favorito?', '', '¿Lugar de nacimiento?', '');
 
 -- --------------------------------------------------------
 
@@ -2606,12 +2604,10 @@ INSERT INTO `psicologo` (`ID_psicologo`, `ID_usuario`, `ID_direccion`, `Nombre_1
 
 CREATE TABLE `solicitar_cita` (
   `ID_solicitud` int(11) NOT NULL,
-  `ID_usuario` int(11) NOT NULL,
   `ID_paciente` int(11) NOT NULL,
   `ID_psicologo` int(11) NOT NULL,
   `ID_cronograma` int(11) NOT NULL,
   `Tipo_cita` enum('Presencial','Online') NOT NULL,
-  `Tipo_consulta` enum('Adulto','Adolescente','Infante','Pareja') NOT NULL,
   `Fecha_cita` date NOT NULL,
   `Hora_cita` time NOT NULL,
   `Descr_causa` varchar(250) NOT NULL,
@@ -2622,44 +2618,13 @@ CREATE TABLE `solicitar_cita` (
 -- Volcado de datos para la tabla `solicitar_cita`
 --
 
-INSERT INTO `solicitar_cita` (`ID_solicitud`, `ID_usuario`, `ID_paciente`, `ID_psicologo`, `ID_cronograma`, `Tipo_cita`, `Tipo_consulta`, `Fecha_cita`, `Hora_cita`, `Descr_causa`, `Status`) VALUES
-(1, 0, 1, 1, 0, 'Online', 'Adulto', '2025-07-22', '16:13:00', 'aaaaaaaaaaaee', 'Activo'),
-(2, 0, 1, 1, 0, 'Presencial', 'Adulto', '2025-07-04', '14:00:00', 'ASDASD', 'Inactivo'),
-(3, 0, 1, 1, 0, 'Online', 'Adulto', '2025-07-11', '11:26:00', 'asdasd', 'Inactivo'),
-(4, 0, 1, 1, 0, 'Presencial', 'Adulto', '2025-07-05', '13:20:00', 'asdasdasdsa', 'Inactivo'),
-(5, 0, 1, 1, 0, 'Online', 'Adolescente', '2025-07-05', '13:20:00', 'dasdsad', 'Inactivo'),
-(6, 0, 2, 1, 0, 'Presencial', 'Adulto', '2025-07-16', '19:01:00', 'MIGRAÑA', 'Inactivo'),
-(7, 0, 2, 1, 0, 'Online', 'Adulto', '2025-07-11', '19:54:00', 'aaaaaaaaaaaea', 'Inactivo'),
-(8, 0, 2, 1, 0, 'Online', 'Adulto', '2025-07-24', '14:52:00', 'dasdasd', 'Activo'),
-(9, 0, 2, 1, 0, 'Online', 'Adulto', '2025-07-24', '03:51:00', 'dasdasd', 'Activo'),
-(10, 0, 1, 1, 0, 'Online', 'Adulto', '2025-07-24', '01:03:00', '444444444444444', 'Inactivo'),
-(11, 0, 2, 1, 0, 'Online', 'Adulto', '2025-07-10', '02:13:00', 'adssssssssss', 'Inactivo'),
-(12, 0, 2, 1, 0, 'Presencial', 'Adulto', '2025-07-25', '14:17:00', '555555555555', 'Inactivo'),
-(13, 0, 2, 1, 0, 'Online', 'Adolescente', '2025-07-07', '14:46:00', 'dsadasd', 'Activo'),
-(14, 0, 4, 2, 0, 'Presencial', 'Adolescente', '2025-07-15', '15:43:00', 'dsdsdsd', 'Activo'),
-(15, 0, 4, 2, 0, 'Online', 'Adolescente', '2025-07-17', '16:11:00', 'dasdasd', 'Activo'),
-(16, 0, 4, 2, 0, 'Online', 'Pareja', '2025-07-24', '16:43:00', 'ddddddddddd', 'Activo'),
-(17, 0, 3, 2, 0, 'Presencial', 'Pareja', '2025-07-22', '14:46:00', 'qqqqqqqqq', 'Activo'),
-(18, 0, 4, 2, 0, 'Online', 'Infante', '2025-07-17', '15:48:00', 'dsadasdasd', 'Activo'),
-(19, 0, 2, 1, 0, 'Presencial', 'Adolescente', '2025-07-22', '14:49:00', 'dasdasd', 'Activo'),
-(20, 0, 2, 1, 0, 'Presencial', 'Adolescente', '2025-07-22', '14:49:00', 'dasdasd', 'Activo'),
-(21, 0, 1, 1, 0, 'Online', 'Adolescente', '2025-07-08', '03:51:00', 'dsdasdasd', 'Activo'),
-(22, 0, 2, 2, 0, 'Presencial', 'Adolescente', '2025-07-11', '15:53:00', 'asddasd', 'Activo'),
-(23, 0, 4, 2, 0, 'Online', 'Adolescente', '2025-07-22', '15:56:00', 'dsadasd', 'Activo'),
-(24, 0, 4, 2, 0, 'Online', 'Adolescente', '2025-07-22', '15:56:00', 'dsadasd', 'Activo'),
-(25, 0, 3, 2, 0, 'Presencial', 'Infante', '2025-07-11', '15:58:00', 'dasdasd', 'Activo'),
-(26, 0, 2, 2, 0, 'Presencial', 'Infante', '2025-07-10', '15:58:00', 'dasdasd', 'Activo'),
-(27, 0, 3, 2, 0, 'Online', 'Adolescente', '2025-07-18', '14:00:00', 'dasdasd', 'Activo'),
-(28, 2, 3, 2, 0, 'Online', 'Adulto', '2025-07-16', '13:00:00', 'AAAAAAAAAA', 'Activo'),
-(29, 0, 2, 1, 0, 'Online', 'Adolescente', '2025-07-09', '08:00:00', 'dasdasd', 'Activo'),
-(30, 2, 2, 1, 0, 'Online', 'Adolescente', '2025-07-04', '08:00:00', 'dasdasd', 'Inactivo'),
-(31, 0, 2, 2, 0, 'Online', 'Adolescente', '2025-07-04', '08:00:00', 'asdasd', 'Activo'),
-(32, 0, 3, 1, 0, 'Presencial', 'Adolescente', '2025-07-04', '10:00:00', 'dasdasd', 'Activo'),
-(33, 0, 2, 1, 0, 'Online', 'Adolescente', '2025-07-03', '08:00:00', 'dasdasd', 'Activo'),
-(34, 0, 4, 1, 0, 'Online', 'Adolescente', '2025-07-04', '15:00:00', 'dasdasd', 'Activo'),
-(35, 1, 5, 2, 0, 'Online', 'Adolescente', '2025-07-17', '13:00:00', 'dasdasd', 'Activo'),
-(36, 2, 11, 1, 0, 'Online', 'Adolescente', '2025-07-17', '15:00:00', '444444444444444444445554', 'Activo'),
-(37, 2, 10, 1, 0, 'Online', 'Infante', '2025-07-23', '15:00:00', 'AQUIIIIIIIIIII', 'Activo');
+INSERT INTO `solicitar_cita` (`ID_solicitud`, `ID_paciente`, `ID_psicologo`, `ID_cronograma`, `Tipo_cita`, `Fecha_cita`, `Hora_cita`, `Descr_causa`, `Status`) VALUES
+(1, 1, 1, 0, 'Presencial', '2025-06-05', '01:21:00', 'Depresion', 'Activo'),
+(2, 1, 1, 0, 'Presencial', '2025-07-04', '14:00:00', 'ASDASD', 'Inactivo'),
+(3, 1, 1, 0, 'Online', '2025-07-11', '11:26:00', 'asdasd', 'Inactivo'),
+(4, 1, 1, 0, 'Presencial', '2025-07-05', '13:20:00', 'asdasdasdsa', 'Inactivo'),
+(5, 1, 1, 0, 'Presencial', '2025-07-05', '13:20:00', 'asdasdasdsa', 'Activo'),
+(6, 2, 1, 0, 'Presencial', '2025-07-16', '19:01:00', 'MIGRAÑA', 'Inactivo');
 
 -- --------------------------------------------------------
 
@@ -2898,7 +2863,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `ID_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `pago`
@@ -2922,13 +2887,13 @@ ALTER TABLE `parroquias`
 -- AUTO_INCREMENT de la tabla `psicologo`
 --
 ALTER TABLE `psicologo`
-  MODIFY `ID_psicologo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_psicologo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitar_cita`
 --
 ALTER TABLE `solicitar_cita`
-  MODIFY `ID_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `ID_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
