@@ -48,6 +48,24 @@ Si aún no tienes una cuenta, sigue estos pasos:
 ¡Listo! Ya podrás acceder al sistema con tus nuevas credenciales.
 > ⚠️ Recuerda guardar tus datos de acceso en un lugar seguro.
 
+## Gestión de Citas
+
+El área de Gestion de citas permite solicitar, modificar, consultar y cancelar citas, con campos para seleccionar paciente, psicólogo, tipo de consulta (online/presencial), fecha y motivo.
+
+Tambien se Integra la API de Google Calendar para sincronizar agendas, destacando por su practicidad.
+
+## Registro de Datos
+
+El sistema incluye formularios detallados para agregar pacientes y psicólogos, con validación de documentos y opciones para listas desplegables (ej. tipo de documento o sexo).
+
+## Redes Sociales
+
+El área de redes sociales centraliza enlaces a plataformas como WhatsApp, Instagram y Facebook mediante la herramienta Atom.bio, fomentando la interacción y el seguimiento.
+
+## Dashboard Administrativo
+
+El dashboard a diferente del dashboard del Paciente muestra métricas clave, menús laterales para navegación rápida y tablas de registros (pacientes y psicólogos), diseñado para optimizar la gestión administrativa.
+
 # Guía de Instalación y Configuración
 Este apartado te guiará paso a paso en la instalación y configuración del entorno necesario para ejecutar el proyecto.
 
@@ -143,3 +161,14 @@ Deberías ver la versión de Git instalada en tu sistema.
   ```
   O ingresa a la carpeta `htdocs` para verificar el repositorio.
 
+## 💥 4. Instalar librerias necesarias
+
+El primero comando a utilizar en el terminal de Visual Studio es para librerías de google.
+  ```sh
+  composer require google/apiclient
+  ```
+El segundo para corregir problemas.
+  ```sh
+  composer require --dev barryvdh/laravel-ide-helper
+  ```
+Además de añadir por supuesto la instalación del composer.
